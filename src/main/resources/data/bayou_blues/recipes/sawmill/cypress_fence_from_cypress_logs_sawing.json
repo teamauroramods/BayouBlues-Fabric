@@ -1,0 +1,1 @@
+{"type": "environmental:sawing", "ingredient": {"tag": "bayou_blues:cypress_logs"}, "result": "bayou_blues:cypress_fence", "count": 4, "conditions": [{"type": "forge:mod_loaded", "modid": "environmental"}]}

@@ -1,0 +1,1 @@
+{"type": "environmental:sawing", "ingredient": {"item": "bayou_blues:vertical_cypress_planks"}, "result": "bayou_blues:cypress_planks", "count": 1, "conditions": [{"type": "forge:mod_loaded", "modid": "environmental"}]}

@@ -1,0 +1,28 @@
+{
+  "rarity": "rare",
+  "displayName": {
+    "translate": "entity.bayou_blues.slabfish.type.bayou"
+  },
+  "conditions": [
+    {
+      "type": "environmental:event",
+      "events": [
+        "spawn",
+        "breed"
+      ]
+    },
+    {
+      "type": "environmental:or",
+      "conditions": [
+        {
+          "type": "environmental:biome",
+          "biome": "bayou_blues:bayou"
+        },
+        {
+          "type": "environmental:biome",
+          "biome": "bayou_blues:bayou_hills"
+        }
+      ]
+    }
+  ]
+}

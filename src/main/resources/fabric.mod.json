@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "bayou_blues",
+  "version": "${version}",
+  "name": "BayouBlues",
+  "description": "A fabric port of a swampy new biome!",
+  "authors": [
+    "Team Aurora"
+  ],
+  "contributors": [],
+  "contact": {
+    "sources": "https://github.com/teamauroramods/BayouBlues-Fabric"
+  },
+  "license": "All-Rights-Reserved",
+  "icon": "icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.teamaurora.bayou_blues.core.BayouBlues"
+    ],
+    "client": [
+      "com.teamaurora.bayou_blues.client.BayouBluesClient"
+    ],
+    "server": []
+  },
+  "mixins": [
+    "bayou_blues.mixins.json"
+  ],
+  "accessWidener" : "bayou_blues.accesswidener",
+  "depends": {
+    "fabricloader": ">=0.7.4",
+    "fabric": "*"
+  }
+}
