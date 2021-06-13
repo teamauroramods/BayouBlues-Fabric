@@ -4,8 +4,8 @@ import com.teamaurora.bayou_blues.core.registry.BayouBluesFeatures;
 import net.minecraft.block.sapling.LargeTreeSaplingGenerator;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.Random;
 
 public class CypressTree extends LargeTreeSaplingGenerator {

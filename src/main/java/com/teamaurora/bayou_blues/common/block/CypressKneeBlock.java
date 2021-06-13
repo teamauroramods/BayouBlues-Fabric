@@ -1,6 +1,7 @@
 package com.teamaurora.bayou_blues.common.block;
 
 import net.minecraft.block.*;
+import net.minecraft.entity.Entity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
@@ -11,6 +12,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import javax.annotation.Nullable;
@@ -71,5 +73,11 @@ public class CypressKneeBlock extends Block implements Waterloggable {
     @Override
     public FluidState getFluidState(BlockState state) {
         return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
+    }
+
+    //TODO Test Fabric and forge to see if it does more damage
+    @Override
+    public void onLandedUpon(World world, BlockPos pos, Entity entity, float distance) {
+        entity.handleFallDamage(distance, 2F);
     }
 }

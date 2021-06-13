@@ -1,10 +1,7 @@
 package com.teamaurora.bayou_blues.core.registry;
 
-import com.teamaurora.bayou_blues.common.item.AlgaeItem;
-import com.teamaurora.bayou_blues.common.item.DrinkItem;
-import com.teamaurora.bayou_blues.common.item.JamItem;
-import com.teamaurora.bayou_blues.common.item.LilyItem;
 import net.fabricmc.loader.FabricLoader;
+import net.minecraft.block.Block;
 import net.minecraft.item.FoodComponent;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -45,7 +42,7 @@ public class BayouBluesItems {
     }
 
     public static Item createItem(String id, Item item) {
-        Registry.register(Registry.ITEM, id, item);
+        Registry.register(Registry.ITEM, BayouBlues.id(id), item);
         return item;
     }
 }

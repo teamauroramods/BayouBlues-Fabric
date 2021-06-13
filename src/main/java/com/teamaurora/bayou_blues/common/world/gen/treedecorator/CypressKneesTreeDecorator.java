@@ -24,7 +24,7 @@ public class CypressKneesTreeDecorator extends TreeDecorator {
 
     @Override
     protected TreeDecoratorType<?> getType() {
-        return BayouBluesFeatures.CYPRESS_KNEES.get();
+        return BayouBluesFeatures.CYPRESS_KNEES;
     }
 
     static {

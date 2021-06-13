@@ -1,18 +1,21 @@
 package com.teamaurora.bayou_blues.core.registry;
 
-import com.minecraftabnormals.abnormals_core.core.util.BiomeUtil;
-import com.minecraftabnormals.abnormals_core.core.util.registry.BiomeSubRegistryHelper;
-import com.mojang.datafixers.util.Pair;
+import com.teamaurora.bayou_blues.common.world.biome.BayouBluesBiomeFeatures;
+import com.teamaurora.bayou_blues.core.BayouBlues;
 import com.teamaurora.bayou_blues.core.BayouBluesConfig;
+import net.fabricmc.fabric.api.biome.v1.OverworldBiomes;
+import net.fabricmc.fabric.api.biome.v1.OverworldClimate;
 import net.minecraft.sound.BiomeMoodSound;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.registry.BuiltinRegistries;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeEffects;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.surfacebuilder.ConfiguredSurfaceBuilders;
-import net.minecraftforge.common.BiomeDictionary;
-import net.minecraftforge.common.BiomeManager;
 
 public class BayouBluesBiomes {
     public static final BiomeSubRegistryHelper.KeyedBiome BAYOU = HELPER.createBiome("bayou", () -> makeBayouBiome(-0.175F, 0.2F));
@@ -27,12 +30,16 @@ public class BayouBluesBiomes {
         BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(BAYOU_HILLS.getKey(), BayouBluesConfig.COMMON.bayouHillsWeight.get()));
     }
 
+    /*
     public static void addBiomeTypes() {
         BiomeDictionary.addTypes(BAYOU.getKey(), BiomeDictionary.Type.SWAMP, BiomeDictionary.Type.LUSH, BiomeDictionary.Type.RARE, BiomeDictionary.Type.OVERWORLD);
         BiomeDictionary.addTypes(BAYOU_HILLS.getKey(), BiomeDictionary.Type.SWAMP, BiomeDictionary.Type.LUSH, BiomeDictionary.Type.HILLS, BiomeDictionary.Type.RARE, BiomeDictionary.Type.OVERWORLD);
     }
+    */
 
     private static Biome makeBayouBiome(float depth, float scale) {
+        BayouBluesBiomeFeatures.addFeatures();
+
         return (new Biome.Builder())
                 .precipitation(Biome.Precipitation.RAIN)
                 .category(Biome.Category.SWAMP)

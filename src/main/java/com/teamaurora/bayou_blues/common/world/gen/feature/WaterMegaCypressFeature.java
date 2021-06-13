@@ -4,6 +4,7 @@ import com.google.common.collect.Sets;
 import com.minecraftabnormals.abnormals_core.core.util.TreeUtil;
 import com.mojang.serialization.Codec;
 import com.teamaurora.bayou_blues.common.util.DirectionalBlockPos;
+import com.teamaurora.bayou_blues.common.util.TreeUtil;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.fluid.Fluids;

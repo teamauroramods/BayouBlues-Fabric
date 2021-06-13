@@ -7,6 +7,10 @@ import net.minecraft.block.ComposterBlock;
 import net.minecraft.block.FireBlock;
 
 public class BayouBluesCompat {
+    public static void init() {
+        registerCompostables();
+        registerFlammables();
+    }
     public static void registerCompostables() {
         ComposterBlock.registerCompostableItem(0.3F, BayouBluesBlocks.CYPRESS_LEAVES);
         ComposterBlock.registerCompostableItem(0.3F, BayouBluesBlocks.CYPRESS_SAPLING);

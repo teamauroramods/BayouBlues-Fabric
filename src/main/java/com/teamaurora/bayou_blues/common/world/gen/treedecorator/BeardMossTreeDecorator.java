@@ -1,6 +1,9 @@
 package com.teamaurora.bayou_blues.common.world.gen.treedecorator;
 
 import com.mojang.serialization.Codec;
+import com.teamaurora.bayou_blues.common.block.BeardMossBlock;
+import com.teamaurora.bayou_blues.common.block.BeardMossBlockBlock;
+import com.teamaurora.bayou_blues.common.util.TreeUtil;
 import com.teamaurora.bayou_blues.core.registry.BayouBluesBlocks;
 import com.teamaurora.bayou_blues.core.registry.BayouBluesFeatures;
 import net.minecraft.block.enums.DoubleBlockHalf;

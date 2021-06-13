@@ -94,7 +94,7 @@ public class CypressBranchBlock extends Block implements Fertilizable {
         if (!flag && player.getStackInHand(handIn).getItem() == Items.BONE_MEAL) {
             return ActionResult.PASS;
         } else if (i > 1) {
-            dropStack(worldIn, pos, new ItemStack(BayouBluesItems.GOOSEBERRIES.get(), 1));
+            dropStack(worldIn, pos, new ItemStack(BayouBluesItems.GOOSEBERRIES, 1));
             worldIn.playSound(null, pos, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.random.nextFloat() * 0.4F);
             worldIn.setBlockState(pos, state.with(AGE, 0), 2);
             return ActionResult.success(worldIn.isClient);
@@ -106,7 +106,7 @@ public class CypressBranchBlock extends Block implements Fertilizable {
     @Override
     public boolean canPlaceAt(BlockState state, WorldView worldIn, BlockPos pos) {
         Block block = worldIn.getBlockState(pos.offset(state.get(FACING), -1)).getBlock();
-        return block == BayouBluesBlocks.CYPRESS_LOG.get() || block == BayouBluesBlocks.CYPRESS_WOOD.get();
+        return block == BayouBluesBlocks.CYPRESS_LOG || block == BayouBluesBlocks.CYPRESS_WOOD;
     }
 
     @Override
@@ -128,13 +128,13 @@ public class CypressBranchBlock extends Block implements Fertilizable {
             }
         }
         BlockState blockstate1 = this.getDefaultState();
-        WorldView iworldreader = context.getWorld();
+        WorldView worldView = context.getWorld();
         BlockPos blockpos = context.getBlockPos();
 
         for(Direction direction : context.getPlacementDirections()) {
             if (direction.getAxis().isHorizontal()) {
                 blockstate1 = blockstate1.with(FACING, direction.getOpposite());
-                if (blockstate1.canPlaceAt(iworldreader, blockpos)) {
+                if (blockstate1.canPlaceAt(worldView, blockpos)) {
                     return blockstate1;
                 }
             }

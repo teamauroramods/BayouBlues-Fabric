@@ -5,8 +5,7 @@ import com.minecraftabnormals.abnormals_core.core.util.MathUtil;
 import com.minecraftabnormals.abnormals_core.core.util.TreeUtil;
 import com.mojang.serialization.Codec;
 import com.teamaurora.bayou_blues.common.util.DirectionalBlockPos;
-import com.teamaurora.bayou_blues.core.registry.BayouBluesBlocks;
-import net.minecraft.block.SaplingBlock;
+import com.teamaurora.bayou_blues.common.util.TreeUtil;
 import net.minecraft.util.math.BlockBox;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -29,7 +28,7 @@ public class CypressFeature extends Feature<TreeFeatureConfig> {
         if (position.getY() <= 0 || position.getY() + height > worldIn.getHeight() - 1) {
             return false;
         }
-        if (!TreeUtil.isValidGround(worldIn, position.down(), (SaplingBlock) BayouBluesBlocks.CYPRESS_SAPLING.get())) {
+        if (!TreeUtil.isValidGround(worldIn, position.down())) {
             return false;
         }
 

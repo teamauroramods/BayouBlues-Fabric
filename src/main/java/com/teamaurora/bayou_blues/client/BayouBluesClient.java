@@ -1,8 +1,10 @@
 package com.teamaurora.bayou_blues.client;
 
 import com.teamaurora.bayou_blues.core.registry.BayouBluesBlocks;
+import com.teamaurora.bayou_blues.core.registry.BayouBluesEntities;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.TallPlantBlock;
@@ -13,8 +15,10 @@ import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.color.world.FoliageColors;
 import net.minecraft.client.color.world.GrassColors;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.entity.BoatEntityRenderer;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -63,7 +67,7 @@ public class BayouBluesClient implements ClientModInitializer {
 
         BlockRenderLayerMap.INSTANCE.putBlock(BayouBluesBlocks.GIANT_FERN, RenderLayer.getCutout());
 
-
+        EntityRendererRegistry.INSTANCE.register(BayouBluesEntities.BAYOU_BOAT, (dispatcher, context) -> new BoatEntityRenderer(dispatcher));
     }
 
     public static void registerBlockColors() {

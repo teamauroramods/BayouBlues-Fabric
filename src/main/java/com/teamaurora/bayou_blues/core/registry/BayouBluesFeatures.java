@@ -1,6 +1,7 @@
 package com.teamaurora.bayou_blues.core.registry;
 
 import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
 import com.teamaurora.bayou_blues.common.world.gen.feature.*;
 import com.teamaurora.bayou_blues.common.world.gen.treedecorator.*;
 import com.teamaurora.bayou_blues.core.BayouBlues;
@@ -22,6 +23,7 @@ import net.minecraft.world.gen.placer.DoublePlantPlacer;
 import net.minecraft.world.gen.placer.SimpleBlockPlacer;
 import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
+import net.minecraft.world.gen.tree.TreeDecorator;
 import net.minecraft.world.gen.tree.TreeDecoratorType;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 
@@ -36,15 +38,20 @@ public class BayouBluesFeatures {
 
     public static final Feature<DefaultFeatureConfig> PODZOL_PATCH = registerFeature("podzol_patch", new PodzolPatchFeature(DefaultFeatureConfig.CODEC));
 
-    public static final TreeDecoratorType<?> HANGING_CYPRESS_LEAVES = TREE_DECORATORS.register("hanging_cypress_leaves", () -> new TreeDecoratorType<>(HangingCypressLeavesTreeDecorator.CODEC));
-    public static final TreeDecoratorType<?> CYPRESS_KNEES = TREE_DECORATORS.register("cypress_knees", () -> new TreeDecoratorType<>(CypressKneesTreeDecorator.CODEC));
-    public static final TreeDecoratorType<?> SPARSE_CYPRESS_KNEES = TREE_DECORATORS.register("sparse_cypress_knees", () -> new TreeDecoratorType<>(SparseCypressKneesTreeDecorator.CODEC));
-    public static final TreeDecoratorType<?> CYPRESS_BRANCH = TREE_DECORATORS.register("cypress_branch", () -> new TreeDecoratorType<>(CypressBranchTreeDecorator.CODEC));
-    public static final TreeDecoratorType<?> BEARD_MOSS = TREE_DECORATORS.register("beard_moss", () -> new TreeDecoratorType<>(BeardMossTreeDecorator.CODEC));
-    public static final TreeDecoratorType<?> SPARSE_LEAVE_VINE = TREE_DECORATORS.register("sparse_leave_vine", () -> new TreeDecoratorType<>(SparseLeaveVineTreeDecorator.CODEC));
+    public static final TreeDecoratorType<?> HANGING_CYPRESS_LEAVES = registerTreeDecor("hanging_cypress_leaves", HangingCypressLeavesTreeDecorator.CODEC);
+    public static final TreeDecoratorType<?> CYPRESS_KNEES = registerTreeDecor("cypress_knees", CypressKneesTreeDecorator.CODEC);
+    public static final TreeDecoratorType<?> SPARSE_CYPRESS_KNEES = registerTreeDecor("sparse_cypress_knees", SparseCypressKneesTreeDecorator.CODEC);
+    public static final TreeDecoratorType<?> CYPRESS_BRANCH = registerTreeDecor("cypress_branch", CypressBranchTreeDecorator.CODEC);
+    public static final TreeDecoratorType<?> BEARD_MOSS = registerTreeDecor("beard_moss", BeardMossTreeDecorator.CODEC);
+    public static final TreeDecoratorType<?> SPARSE_LEAVE_VINE = registerTreeDecor("sparse_leave_vine", SparseLeaveVineTreeDecorator.CODEC);
 
-    private static <FC extends Feature> Feature<?> registerFeature(String id, ConfiguredFeature<FC, ?> configuredFeature) {
-        return Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, id, configuredFeature);
+    private static <C extends FeatureConfig, F extends Feature<C>> F registerFeature(String name, F feature) {
+        Registry.register(Registry.FEATURE, BayouBlues.id(name), feature);
+        return feature;
+    }
+
+    private static <P extends TreeDecorator> TreeDecoratorType<P> registerTreeDecor(String id, Codec<P> codec) {
+        return Registry.register(Registry.TREE_DECORATOR_TYPE, BayouBlues.id(id), new TreeDecoratorType<>(codec));
     }
 
     public static final class BlockStates {
@@ -165,7 +172,7 @@ public class BayouBluesFeatures {
         public static final ConfiguredFeature<?, ?> PATCH_LILY_WARM = Feature.RANDOM_PATCH.configure(Configs.PATCH_LILY_WARM_CONFIG).decorate(ConfiguredFeatures.Decorators.SQUARE_HEIGHTMAP).decorate(Decorator.CHANCE.configure(new ChanceDecoratorConfig(6)));
 
         private static <FC extends FeatureConfig> void register(String name, ConfiguredFeature<FC, ?> configuredFeature) {
-            Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(BayouBlues.MODID, name), configuredFeature);
+            Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, BayouBlues.id(name), configuredFeature);
         }
 
         public static void registerConfiguredFeatures() {

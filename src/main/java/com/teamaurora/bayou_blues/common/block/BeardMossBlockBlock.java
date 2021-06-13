@@ -11,10 +11,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
-import net.minecraftforge.common.IForgeShearable;
 
 @SuppressWarnings("deprecation")
-public class BeardMossBlockBlock extends Block implements IForgeShearable {
+public class BeardMossBlockBlock extends Block {
     public static final BooleanProperty PERSISTENT = Properties.PERSISTENT;
 
     public BeardMossBlockBlock(Settings properties) {

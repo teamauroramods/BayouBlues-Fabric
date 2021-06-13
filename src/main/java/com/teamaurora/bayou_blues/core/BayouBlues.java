@@ -1,7 +1,10 @@
 package com.teamaurora.bayou_blues.core;
 
+import com.teamaurora.bayou_blues.common.world.biome.BayouBluesBiomeFeatures;
 import com.teamaurora.bayou_blues.core.other.BayouBluesCompat;
+import com.teamaurora.bayou_blues.core.other.BayouBluesEvents;
 import com.teamaurora.bayou_blues.core.registry.BayouBluesBiomes;
+import com.teamaurora.bayou_blues.core.registry.BayouBluesEntities;
 import com.teamaurora.bayou_blues.core.registry.BayouBluesFeatures;
 import net.fabricmc.api.ModInitializer;
 import org.apache.logging.log4j.Level;
@@ -17,12 +20,8 @@ public class BayouBlues implements ModInitializer {
     @Override
     public void onInitialize() {
         BayouBluesFeatures.Configured.registerConfiguredFeatures();
-        BayouBluesCompat.registerFlammables();
-        BayouBluesCompat.registerCompostables();
-
-        BayouBluesBiomes.addBiomeTypes();
-        BayouBluesBiomes.registerBiomesToDictionary();
-        BayouBluesBiomes.addHillBiome();
+        BayouBluesCompat.init();
+        BayouBluesBiomeFeatures.init();
 
         log(Level.INFO, "Initializing");
     }

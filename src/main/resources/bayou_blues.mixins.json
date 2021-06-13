@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "com.teamaurora.bayou_blues.mixin",
+  "package": "com.teamaurora.bayou_blues.core.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [],
   "client": [],
