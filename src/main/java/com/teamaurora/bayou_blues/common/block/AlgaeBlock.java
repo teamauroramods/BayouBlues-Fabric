@@ -1,7 +1,6 @@
 package com.teamaurora.bayou_blues.common.block;
 
 import net.minecraft.block.*;
-import net.minecraft.entity.Entity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.server.world.ServerWorld;
@@ -10,6 +9,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
+
 import java.util.Random;
 
 @SuppressWarnings("deprecation")
@@ -27,8 +27,6 @@ public class AlgaeBlock extends PlantBlock implements Fertilizable {
 
     @Override
     public boolean canPlaceAt(BlockState state, WorldView worldIn, BlockPos pos) {
-        //if (state.getBlock() == this) //Forge: This function is called during world gen and placement, before this block is set, so if we are not 'here' then assume it's the pre-check.
-        //    return worldIn.getBlockState(blockpos).canSustainPlant(worldIn, blockpos, Direction.UP, this);
         FluidState fluidstate = worldIn.getFluidState(pos.down());
         FluidState fluidstate1 = worldIn.getFluidState(pos);
         return (fluidstate.getFluid() == Fluids.WATER || state.getMaterial() == Material.ICE) && fluidstate1.getFluid() == Fluids.EMPTY;

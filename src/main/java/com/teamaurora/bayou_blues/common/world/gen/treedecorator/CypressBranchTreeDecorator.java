@@ -22,7 +22,7 @@ public class CypressBranchTreeDecorator extends TreeDecorator {
 
     @Override
     protected TreeDecoratorType<?> getType() {
-        return BayouBluesFeatures.CYPRESS_BRANCH.get();
+        return BayouBluesFeatures.CYPRESS_BRANCH;
     }
 
     static {
@@ -36,7 +36,7 @@ public class CypressBranchTreeDecorator extends TreeDecorator {
             if (rand.nextInt(25) == 0) {
                 Direction dir = Direction.fromHorizontal(rand.nextInt(4));
                 if (world.getBlockState(pos.offset(dir)).isAir()) {
-                    world.setBlockState(pos.offset(dir), BayouBluesBlocks.CYPRESS_BRANCH.get().getDefaultState().with(CypressBranchBlock.FACING, dir).with(CypressBranchBlock.AGE, 2), 3);
+                    world.setBlockState(pos.offset(dir), BayouBluesBlocks.CYPRESS_BRANCH.getDefaultState().with(CypressBranchBlock.FACING, dir).with(CypressBranchBlock.AGE, 2), 3);
                 }
             }
         }

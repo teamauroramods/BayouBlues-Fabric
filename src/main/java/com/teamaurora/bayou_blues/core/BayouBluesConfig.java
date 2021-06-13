@@ -1,40 +1,48 @@
 package com.teamaurora.bayou_blues.core;
 
-public class BayouBluesConfig {
-    public static class Common {
-        public final ForgeConfigSpec.ConfigValue<Integer> bayouWeight;
-        public final ForgeConfigSpec.ConfigValue<Integer> bayouHillsWeight;
-        public final ForgeConfigSpec.ConfigValue<Integer> lilyBonemealBehavior;
-        public final ForgeConfigSpec.ConfigValue<Boolean> doLiliesSpawn;
+import me.shedaniel.autoconfig.AutoConfig;
+import me.shedaniel.autoconfig.ConfigData;
+import me.shedaniel.autoconfig.annotation.Config;
+import me.shedaniel.autoconfig.annotation.Config.Gui.Background;
+import me.shedaniel.autoconfig.annotation.ConfigEntry.Gui.CollapsibleObject;
+import me.shedaniel.autoconfig.annotation.ConfigEntry.Gui.RequiresRestart;
+import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
+import me.shedaniel.cloth.clothconfig.shadowed.blue.endless.jankson.Comment;
 
-        Common(ForgeConfigSpec.Builder builder) {
-            builder.comment("Common configurations for Bayou Blues")
-            .push("common");
+@Config(name = BayouBlues.MODID)
+@Background(value = BayouBlues.MODID + ":textures/block/algae_thatch.png")
+public class BayouBluesConfig implements ConfigData {
+    @CollapsibleObject
+    @Comment("Values for biome frequencies; lower = more rare.")
+    public BiomeWeights biomeWeights = new BiomeWeights();
 
-            builder.comment("Lily flower configuration").push("lily_flowers");
+    @CollapsibleObject
+    @Comment("Lily flower configuration")
+    public LilyFlowers lilyFlowers = new LilyFlowers();
 
-            lilyBonemealBehavior = builder.comment("Lily bonemeal behavior. 0=none. 1=bonemealing lily pad grows lily flowers. 2=bonemealing lily flower gives you more of it.")
-                    .define("Lily bonemeal behavior", 1);
-            doLiliesSpawn = builder.define("Lily flower spawns in the world", true);
+    public static class BiomeWeights {
+        @Comment("Bayou weight")
+        @RequiresRestart
+        public int bayouWeight = 1;
 
-            builder.pop();
-
-            builder.comment("Values for biome frequencies; lower = more rare. (Requires restart)")
-            .push("biome_weights");
-
-            bayouWeight = builder.define("Bayou weight", 1);
-            bayouHillsWeight = builder.define("Bayou Hills weight", 0);
-
-            builder.pop();
-            builder.pop();
-        }
+        @RequiresRestart
+        @Comment("Bayou Hills weight")
+        public int bayouHillsWeight = 0;
     }
 
-    public static final ForgeConfigSpec COMMON_SPEC;
-    public static final Common COMMON;
-    static {
-        final Pair<Common, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(Common::new);
-        COMMON_SPEC = specPair.getRight();
-        COMMON = specPair.getLeft();
+    public static class LilyFlowers {
+        @Comment("Lily bonemeal behavior. 0 = none. 1 = bonemealing lily pad grows lily flowers. 2 = bonemealing lily flower gives you more of it.")
+        public int lilyBonemealBehavior = 1;
+
+        @Comment("Lily flower spawns in the world")
+        public boolean doLiliesSpawn = true;
+    }
+
+    public static void registerConfig() {
+        AutoConfig.register(BayouBluesConfig.class, GsonConfigSerializer::new);
+    }
+
+    public static BayouBluesConfig get() {
+        return AutoConfig.getConfigHolder(BayouBluesConfig.class).getConfig();
     }
 }

@@ -4,8 +4,6 @@ import com.teamaurora.bayou_blues.core.registry.BayouBluesBlocks;
 import com.teamaurora.bayou_blues.core.registry.BayouBluesItems;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.fluid.FluidState;
-import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -16,7 +14,10 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.util.*;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.BlockMirror;
+import net.minecraft.util.BlockRotation;
+import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -25,7 +26,8 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.Random;
 
 @SuppressWarnings("deprecation")
@@ -80,9 +82,9 @@ public class CypressBranchBlock extends Block implements Fertilizable {
     @Override
     public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
         int j = state.get(AGE);
-        if (j < 2 && net.minecraftforge.common.ForgeHooks.onCropsGrowPre(worldIn, pos, state, random.nextInt(10) == 0)) {
+
+        if (j < 2 && random.nextInt(10) == 0) {
             worldIn.setBlockState(pos, state.with(AGE, j+1), 2);
-            net.minecraftforge.common.ForgeHooks.onCropsGrowPost(worldIn, pos, state);
         }
     }
 

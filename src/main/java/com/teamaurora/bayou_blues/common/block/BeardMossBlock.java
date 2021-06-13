@@ -49,7 +49,7 @@ public class BeardMossBlock extends Block implements Fertilizable {
     @Override
     public boolean canPlaceAt(BlockState state, WorldView worldIn, BlockPos pos) {
         BlockState stateUp = worldIn.getBlockState(pos.up());
-        return stateUp.isOpaque() || stateUp.getBlock() == this || stateUp.isIn(BlockTags.LEAVES) || stateUp.getBlock() == BayouBluesBlocks.BEARD_MOSS_BLOCK.get();
+        return stateUp.isOpaque() || stateUp.getBlock() == this || stateUp.isIn(BlockTags.LEAVES) || stateUp.getBlock() == BayouBluesBlocks.BEARD_MOSS_BLOCK;
     }
 
     @Override
@@ -87,7 +87,7 @@ public class BeardMossBlock extends Block implements Fertilizable {
 
     @Override
     public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
-        if (worldIn.random.nextInt(8) == 0 && worldIn.isAreaLoaded(pos, 4)) { // Forge: check area to prevent loading unloaded chunks
+        if (worldIn.random.nextInt(8) == 0) {
             if (worldIn.isAir(pos.down()) && worldIn.getBlockState(pos.up(3)).getBlock() != this) {
                 worldIn.setBlockState(pos.down(), this.getDefaultState());
             }

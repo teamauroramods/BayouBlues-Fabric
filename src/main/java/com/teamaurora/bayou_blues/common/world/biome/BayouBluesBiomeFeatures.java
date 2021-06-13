@@ -74,33 +74,26 @@ public class BayouBluesBiomeFeatures {
         BiomeModifications.addFeature(BAYOU,GenerationStep.Feature.VEGETAL_DECORATION, rk(ConfiguredFeatures.RED_MUSHROOM_SWAMP));
     }
 
-    private static void withBayouGrasses(BiomeGenerationSettingsBuilder builder) {
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_GRASS);
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_FERN);
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_GIANT_FERN);
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_TALL_GRASS);
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_LARGE_FERN);
+    private static void withBayouGrasses() {
+        BiomeModifications.addFeature(BAYOU, GenerationStep.Feature.VEGETAL_DECORATION, rk(BayouBluesFeatures.Configured.PATCH_GRASS));
+        BiomeModifications.addFeature(BAYOU, GenerationStep.Feature.VEGETAL_DECORATION, rk(BayouBluesFeatures.Configured.PATCH_FERN));
+        BiomeModifications.addFeature(BAYOU, GenerationStep.Feature.VEGETAL_DECORATION, rk(BayouBluesFeatures.Configured.PATCH_GIANT_FERN));
+        BiomeModifications.addFeature(BAYOU, GenerationStep.Feature.VEGETAL_DECORATION, rk(BayouBluesFeatures.Configured.PATCH_TALL_GRASS));
+        BiomeModifications.addFeature(BAYOU, GenerationStep.Feature.VEGETAL_DECORATION, rk(BayouBluesFeatures.Configured.PATCH_LARGE_FERN));
     }
 
-    private static void withAllLilyFlowers(BiomeGenerationSettingsBuilder builder) {
-        if (BayouBluesConfig.COMMON.doLiliesSpawn) {
-            builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_LILY_COOL);
-            builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_LILY_NEUTRAL);
-            builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_LILY_WARM);
+    private static void withAllLilyFlowers() {
+        if (BayouBluesConfig.get().lilyFlowers.doLiliesSpawn) {
+            BiomeModifications.addFeature(BAYOU, GenerationStep.Feature.VEGETAL_DECORATION, rk(BayouBluesFeatures.Configured.PATCH_LILY_COOL));
+            BiomeModifications.addFeature(BAYOU, GenerationStep.Feature.VEGETAL_DECORATION, rk(BayouBluesFeatures.Configured.PATCH_LILY_NEUTRAL));
+            BiomeModifications.addFeature(BAYOU, GenerationStep.Feature.VEGETAL_DECORATION, rk(BayouBluesFeatures.Configured.PATCH_LILY_WARM));
         }
     }
 
-    private static void withWarmLilyFlowers(BiomeGenerationSettingsBuilder builder) {
-        if (BayouBluesConfig.COMMON.doLiliesSpawn) {
-            builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_LILY_NEUTRAL);
-            builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_LILY_WARM);
-        }
-    }
-
-    private static void withCoolLilyFlowers(BiomeGenerationSettingsBuilder builder) {
-        if (BayouBluesConfig.COMMON.doLiliesSpawn) {
-            builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_LILY_NEUTRAL);
-            builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, BayouBluesFeatures.Configured.PATCH_LILY_WARM);
+    private static void withCoolLilyFlowers() {
+        if (BayouBluesConfig.get().lilyFlowers.doLiliesSpawn) {
+            BiomeModifications.addFeature(SWAMP, GenerationStep.Feature.VEGETAL_DECORATION, rk(BayouBluesFeatures.Configured.PATCH_LILY_NEUTRAL));
+            BiomeModifications.addFeature(SWAMP, GenerationStep.Feature.VEGETAL_DECORATION, rk(BayouBluesFeatures.Configured.PATCH_LILY_WARM));
         }
     }
 

@@ -37,7 +37,7 @@ public class LilyItem extends BlockItem {
             // Never know what other mods might do; player could be null
             if (context.getPlayer() != null) {
                 PlayerEntity playerentity = context.getPlayer();
-                world.playSound(playerentity, pos, this.getPlaceSound(state, world, pos, context.getPlayer()), SoundCategory.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
+                world.playSound(playerentity, pos, this.getPlaceSound(state), SoundCategory.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
                 playerentity.swingHand(context.getHand());
             }
             return ActionResult.CONSUME;
@@ -50,7 +50,7 @@ public class LilyItem extends BlockItem {
             // Never know what other mods might do; player could be null
             if (context.getPlayer() != null) {
                 PlayerEntity playerentity = context.getPlayer();
-                world.playSound(playerentity, pos, this.getPlaceSound(state, world, pos, context.getPlayer()), SoundCategory.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
+                world.playSound(playerentity, pos, this.getPlaceSound(state), SoundCategory.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
                 playerentity.swingHand(context.getHand());
             }
             return ActionResult.CONSUME;
@@ -58,7 +58,7 @@ public class LilyItem extends BlockItem {
         return ActionResult.PASS;
     }
 
-    protected SoundEvent getPlaceSound(BlockState state, World world, BlockPos pos, PlayerEntity entity) {
-        return state.getSoundType(world, pos, entity).getPlaceSound();
+    protected SoundEvent getPlaceSound(BlockState state) {
+        return state.getSoundGroup().getPlaceSound();
     }
 }

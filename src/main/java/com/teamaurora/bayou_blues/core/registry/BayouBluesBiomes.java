@@ -18,22 +18,40 @@ import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.surfacebuilder.ConfiguredSurfaceBuilders;
 
 public class BayouBluesBiomes {
-    public static final BiomeSubRegistryHelper.KeyedBiome BAYOU = HELPER.createBiome("bayou", () -> makeBayouBiome(-0.175F, 0.2F));
-    public static final BiomeSubRegistryHelper.KeyedBiome BAYOU_HILLS = HELPER.createBiome("bayou_hills", () -> makeBayouBiome(-0.1F, 0.4F));
+    public static final RegistryKey<Biome> BAYOU = createBiome("bayou", makeBayouBiome(-0.175F, 0.2F));
+    public static final RegistryKey<Biome> BAYOU_HILLS = createBiome("bayou_hills", makeBayouBiome(-0.1F, 0.4F));
+
+    private static RegistryKey<Biome> createBiome(String id, Biome biome) {
+        Identifier identifier = BayouBlues.id(id);
+        BuiltinRegistries.add(BuiltinRegistries.BIOME, identifier, biome);
+
+        return getKey(identifier);
+    }
+
+    private static RegistryKey<Biome> getKey(Identifier identifier) {
+        return RegistryKey.of(Registry.BIOME_KEY, identifier);
+    }
+
+    public static void init() {
+        addHillBiome();
+        registerBiomesToDictionary();
+    }
 
     public static void addHillBiome() {
-        BiomeUtil.addHillBiome(BAYOU.getKey(), Pair.of(BAYOU_HILLS.getKey(), 1));
+        OverworldBiomes.addHillsBiome(BAYOU, BAYOU_HILLS, 1);
     }
 
     public static void registerBiomesToDictionary() {
-        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(BAYOU.getKey(), BayouBluesConfig.COMMON.bayouWeight.get()));
-        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(BAYOU_HILLS.getKey(), BayouBluesConfig.COMMON.bayouHillsWeight.get()));
+        OverworldBiomes.addContinentalBiome(BAYOU, OverworldClimate.TEMPERATE, BayouBluesConfig.get().biomeWeights.bayouWeight);
+        if (BayouBluesConfig.get().biomeWeights.bayouHillsWeight > 0) {
+            OverworldBiomes.addContinentalBiome(BAYOU_HILLS, OverworldClimate.TEMPERATE, BayouBluesConfig.get().biomeWeights.bayouHillsWeight);
+        }
     }
 
     /*
     public static void addBiomeTypes() {
-        BiomeDictionary.addTypes(BAYOU.getKey(), BiomeDictionary.Type.SWAMP, BiomeDictionary.Type.LUSH, BiomeDictionary.Type.RARE, BiomeDictionary.Type.OVERWORLD);
-        BiomeDictionary.addTypes(BAYOU_HILLS.getKey(), BiomeDictionary.Type.SWAMP, BiomeDictionary.Type.LUSH, BiomeDictionary.Type.HILLS, BiomeDictionary.Type.RARE, BiomeDictionary.Type.OVERWORLD);
+        BiomeDictionary.addTypes(BAYOU, BiomeDictionary.Type.SWAMP, BiomeDictionary.Type.LUSH, BiomeDictionary.Type.RARE, BiomeDictionary.Type.OVERWORLD);
+        BiomeDictionary.addTypes(BAYOU_HILLS, BiomeDictionary.Type.SWAMP, BiomeDictionary.Type.LUSH, BiomeDictionary.Type.HILLS, BiomeDictionary.Type.RARE, BiomeDictionary.Type.OVERWORLD);
     }
     */
 

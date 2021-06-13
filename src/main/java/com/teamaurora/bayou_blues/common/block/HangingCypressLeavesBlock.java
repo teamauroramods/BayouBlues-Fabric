@@ -1,7 +1,6 @@
 package com.teamaurora.bayou_blues.common.block;
 
 import net.minecraft.block.*;
-import net.minecraft.entity.Shearable;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
@@ -12,7 +11,7 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings("deprecation")
-public class HangingCypressLeavesBlock extends Block implements Shearable {
+public class HangingCypressLeavesBlock extends Block {
     protected static final VoxelShape SHAPE = Block.createCuboidShape(1.0, 4.0, 1.0, 15.0, 16.0, 15.0);
 
     public HangingCypressLeavesBlock(AbstractBlock.Settings properties) {

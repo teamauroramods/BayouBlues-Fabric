@@ -1,7 +1,6 @@
 package com.teamaurora.bayou_blues.common.world.gen.feature;
 
 import com.google.common.collect.Sets;
-import com.minecraftabnormals.abnormals_core.core.util.TreeUtil;
 import com.mojang.serialization.Codec;
 import com.teamaurora.bayou_blues.common.util.DirectionalBlockPos;
 import com.teamaurora.bayou_blues.common.util.TreeUtil;
@@ -247,13 +246,13 @@ public class WaterMegaCypressFeature extends Feature<TreeFeatureConfig> {
         if (!(world instanceof BlockView)) {
             return world.testBlockState(pos, BlockState::isAir) || world.testBlockState(pos, state -> state.getFluidState().isIn(FluidTags.WATER));
         } else {
-            return world.testBlockState(pos, state -> state.isAir((BlockView) world, pos)) || world.testBlockState(pos, state -> state.getFluidState().isIn(FluidTags.WATER));
+            return world.testBlockState(pos, state -> state.isAir() || world.testBlockState(pos, state2 -> state2.getFluidState().isIn(FluidTags.WATER)));
         }
     }
 
     public static boolean isAirOrWaterOrLeaves(TestableWorld world, BlockPos pos) {
         if (world instanceof WorldView) {
-            return world.testBlockState(pos, state -> state.canBeReplacedByLeaves((WorldView) world, pos)) || world.testBlockState(pos, state -> state.getFluidState().isIn(FluidTags.WATER));
+            return world.testBlockState(pos, state -> state.isAir() || state.isIn(BlockTags.LEAVES)) || world.testBlockState(pos, state2 -> state2.getFluidState().isIn(FluidTags.WATER));
         }
         return world.testBlockState(pos, (state) -> isAirOrWater(world, pos) || state.isIn(BlockTags.LEAVES));
     }

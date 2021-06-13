@@ -1,8 +1,6 @@
 package com.teamaurora.bayou_blues.common.world.gen.feature;
 
 import com.google.common.collect.Sets;
-import com.minecraftabnormals.abnormals_core.core.util.MathUtil;
-import com.minecraftabnormals.abnormals_core.core.util.TreeUtil;
 import com.mojang.serialization.Codec;
 import com.teamaurora.bayou_blues.common.util.DirectionalBlockPos;
 import com.teamaurora.bayou_blues.common.util.TreeUtil;

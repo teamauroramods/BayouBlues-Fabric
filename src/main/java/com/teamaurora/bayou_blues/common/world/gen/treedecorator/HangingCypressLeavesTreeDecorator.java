@@ -18,7 +18,7 @@ public class HangingCypressLeavesTreeDecorator extends TreeDecorator {
 
     @Override
     protected TreeDecoratorType<?> getType() {
-        return BayouBluesFeatures.HANGING_CYPRESS_LEAVES.get();
+        return BayouBluesFeatures.HANGING_CYPRESS_LEAVES;
     }
 
     static {
@@ -30,7 +30,7 @@ public class HangingCypressLeavesTreeDecorator extends TreeDecorator {
         for (BlockPos pos : leaves) {
             if (world.getBlockState(pos.down()).isAir()) {
                 if (rand.nextInt(3) == 0) {
-                    world.setBlockState(pos.down(), BayouBluesBlocks.HANGING_CYPRESS_LEAVES.get().getDefaultState(), 3);
+                    world.setBlockState(pos.down(), BayouBluesBlocks.HANGING_CYPRESS_LEAVES.getDefaultState(), 3);
                 }
             }
         }

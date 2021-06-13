@@ -7,9 +7,24 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Items;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.item.SignItem;
+import net.minecraft.entity.EntityType;
+import com.teamaurora.bayou_blues.core.BayouBlues;
+import com.terraformersmc.terraform.boat.TerraformBoatItem;
+import com.terraformersmc.terraform.boat.TerraformBoatEntity;
+import java.util.function.Supplier;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
+import com.terraformersmc.terraform.boat.TerraformBoat;
+import net.minecraft.entity.SpawnGroup;
+import net.minecraft.entity.EntityDimensions;
+import net.minecraft.util.Identifier;
+import com.teamaurora.bayou_blues.common.item.AlgaeItem;
+import com.teamaurora.bayou_blues.common.item.DrinkItem;
+import com.teamaurora.bayou_blues.common.item.JamItem;
+import com.teamaurora.bayou_blues.common.item.LilyItem;
 
 public class BayouBluesItems {
-    public static final Item CYPRESS_BOAT = createBoatItem("cypress", BayouBluesBlocks.CYPRESS_PLANKS);
+    public static final Item CYPRESS_BOAT = registerBoatItem("cypress", ()-> BayouBluesEntities.BAYOU_BOAT);
 
     public static final Item GOOSEBERRIES = createItem("gooseberries", new Item(new Item.Settings().food(Foods.GOOSEBERRIES).group(ItemGroup.FOOD)));
     public static final Item GOOSEBERRY_JUICE = createItem("gooseberry_juice", new DrinkItem(new Item.Settings().food(Foods.GOOSEBERRY_JUICE).maxCount(16).group(ItemGroup.FOOD)));
@@ -44,5 +59,13 @@ public class BayouBluesItems {
     public static Item createItem(String id, Item item) {
         Registry.register(Registry.ITEM, BayouBlues.id(id), item);
         return item;
+    }
+
+    public static SignItem registerSignItem(String name, Block standing, Block wall, Item.Settings settings) {
+        return Registry.register(Registry.ITEM, BayouBlues.id(name), new SignItem(settings, standing, wall));
+    }
+
+    public static TerraformBoatItem registerBoatItem(String name, Supplier<EntityType<TerraformBoatEntity>> boatType) {
+        return Registry.register(Registry.ITEM, BayouBlues.id(name), new TerraformBoatItem(boatType, new Item.Settings().group(ItemGroup.TRANSPORTATION).maxCount(1)));
     }
 }

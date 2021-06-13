@@ -20,56 +20,54 @@ public class SparseLeaveVineTreeDecorator extends TreeDecorator {
     public static final SparseLeaveVineTreeDecorator DECORATOR = new SparseLeaveVineTreeDecorator();
 
     protected TreeDecoratorType<?> getType() {
-        return BayouBluesFeatures.SPARSE_LEAVE_VINE.get();
+        return BayouBluesFeatures.SPARSE_LEAVE_VINE;
     }
 
-    public void generate(StructureWorldAccess p_225576_1_, Random p_225576_2_, List<BlockPos> p_225576_3_, List<BlockPos> p_225576_4_, Set<BlockPos> p_225576_5_, BlockBox p_225576_6_) {
-        p_225576_4_.forEach((p_242866_5_) -> {
-            if (p_225576_2_.nextInt(16) == 0) {
-                BlockPos blockpos = p_242866_5_.west();
-                if (Feature.isAir(p_225576_1_, blockpos)) {
-                    this.func_227420_a_(p_225576_1_, blockpos, VineBlock.EAST, p_225576_5_, p_225576_6_);
+    public void generate(StructureWorldAccess worldAccess, Random random, List<BlockPos> pos, List<BlockPos> pos2, Set<BlockPos> pos3, BlockBox blockBox) {
+        pos2.forEach((dir) -> {
+            if (random.nextInt(16) == 0) {
+                BlockPos blockpos = dir.west();
+                if (Feature.isAir(worldAccess, blockpos)) {
+                    this.placeVine(worldAccess, blockpos, VineBlock.EAST, pos3, blockBox);
                 }
             }
 
-            if (p_225576_2_.nextInt(16) == 0) {
-                BlockPos blockpos1 = p_242866_5_.east();
-                if (Feature.isAir(p_225576_1_, blockpos1)) {
-                    this.func_227420_a_(p_225576_1_, blockpos1, VineBlock.WEST, p_225576_5_, p_225576_6_);
+            if (random.nextInt(16) == 0) {
+                BlockPos blockpos1 = dir.east();
+                if (Feature.isAir(worldAccess, blockpos1)) {
+                    this.placeVine(worldAccess, blockpos1, VineBlock.WEST, pos3, blockBox);
                 }
             }
 
-            if (p_225576_2_.nextInt(16) == 0) {
-                BlockPos blockpos2 = p_242866_5_.north();
-                if (Feature.isAir(p_225576_1_, blockpos2)) {
-                    this.func_227420_a_(p_225576_1_, blockpos2, VineBlock.SOUTH, p_225576_5_, p_225576_6_);
+            if (random.nextInt(16) == 0) {
+                BlockPos blockpos2 = dir.north();
+                if (Feature.isAir(worldAccess, blockpos2)) {
+                    this.placeVine(worldAccess, blockpos2, VineBlock.SOUTH, pos3, blockBox);
                 }
             }
 
-            if (p_225576_2_.nextInt(16) == 0) {
-                BlockPos blockpos3 = p_242866_5_.south();
-                if (Feature.isAir(p_225576_1_, blockpos3)) {
-                    this.func_227420_a_(p_225576_1_, blockpos3, VineBlock.NORTH, p_225576_5_, p_225576_6_);
+            if (random.nextInt(16) == 0) {
+                BlockPos blockpos3 = dir.south();
+                if (Feature.isAir(worldAccess, blockpos3)) {
+                    this.placeVine(worldAccess, blockpos3, VineBlock.NORTH, pos3, blockBox);
                 }
             }
 
         });
     }
 
-    private void func_227420_a_(ModifiableTestableWorld p_227420_1_, BlockPos p_227420_2_, BooleanProperty p_227420_3_, Set<BlockPos> p_227420_4_, BlockBox p_227420_5_) {
-        this.placeVine(p_227420_1_, p_227420_2_, p_227420_3_, p_227420_4_, p_227420_5_);
+    private void placeVine(ModifiableTestableWorld world, BlockPos pos, BooleanProperty booleanProperty, Set<BlockPos> pos2, BlockBox blockBox) {
+        this.placeVine(world, pos, booleanProperty, pos2, blockBox);
         int i = 4;
 
-        for(BlockPos blockpos = p_227420_2_.down(); Feature.isAir(p_227420_1_, blockpos) && i > 0; --i) {
-            this.placeVine(p_227420_1_, blockpos, p_227420_3_, p_227420_4_, p_227420_5_);
+        for(BlockPos blockpos = pos.down(); Feature.isAir(world, blockpos) && i > 0; --i) {
+            this.placeVine(world, blockpos, booleanProperty, pos2, blockBox);
             blockpos = blockpos.down();
         }
 
     }
 
     static {
-        CODEC = Codec.unit(() -> {
-            return DECORATOR;
-        });
+        CODEC = Codec.unit(() -> DECORATOR);
     }
 }

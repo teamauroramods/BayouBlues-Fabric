@@ -27,7 +27,7 @@ public class MegaCypressFeature extends Feature<TreeFeatureConfig> {
             return false;
         }
         for (BlockPos pos2 : BlockPos.iterate(position, position.add(1, 0, 1))) {
-            if (!TreeUtil.isValidGround(worldIn, pos2.down(), (SaplingBlock) BayouBluesBlocks.CYPRESS_SAPLING.get())) {
+            if (!TreeUtil.isValidGround(worldIn, pos2.down())) {
                 return false;
             }
         }

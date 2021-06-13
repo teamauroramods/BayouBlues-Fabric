@@ -44,24 +44,23 @@ public class BayouBluesBlocks {
     public static final Pair<TerraformSignBlock, TerraformWallSignBlock> CYPRESS_SIGNS = createSignBlock("cypress", Pair.of(new TerraformSignBlock(BayouBlues.id("entity/signs/cypress"), FabricBlockSettings.copyOf(Blocks.OAK_SIGN).materialColor(MaterialColor.PURPLE_TERRACOTTA).breakByTool(FabricToolTags.AXES)), new TerraformWallSignBlock(BayouBlues.id("entity/signs/cypress"), FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN).materialColor(MaterialColor.PURPLE_TERRACOTTA).breakByTool(FabricToolTags.AXES))));
 
     public static final Block CYPRESS_LEAF_CARPET = createBlock("cypress_leaf_carpet", new LeafCarpetBlock(FabricBlockSettings.copy(CYPRESS_LEAVES)), ItemGroup.DECORATIONS);
+    public static final Block HANGING_CYPRESS_LEAVES = createBlock("hanging_cypress_leaves", new HangingCypressLeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).breakByTool(FabricToolTags.SHEARS).breakByTool(FabricToolTags.HOES)), ItemGroup.DECORATIONS);
 
-    public static final Block HANGING_CYPRESS_LEAVES = createBlock("hanging_cypress_leaves", new HangingCypressLeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES)), ItemGroup.DECORATIONS);
-
-    public static final Block CYPRESS_KNEE = createBlock("cypress_knee", new CypressKneeBlock(AbstractBlock.Settings.of(Material.WOOD, MaterialColor.BROWN).strength(2.0F).sounds(BlockSoundGroup.WOOD).nonOpaque()), ItemGroup.DECORATIONS);
-    public static final Block LARGE_CYPRESS_KNEE = createBlock("large_cypress_knee", new DoubleCypressKneeBlock(AbstractBlock.Settings.of(Material.WOOD, MaterialColor.BROWN).strength(2.0F).sounds(BlockSoundGroup.WOOD).nonOpaque()), ItemGroup.DECORATIONS);
+    public static final Block CYPRESS_KNEE = createBlock("cypress_knee", new CypressKneeBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.BROWN).strength(2.0F).sounds(BlockSoundGroup.WOOD).nonOpaque()), ItemGroup.DECORATIONS);
+    public static final Block LARGE_CYPRESS_KNEE = createBlock("large_cypress_knee", new DoubleCypressKneeBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.BROWN).strength(2.0F).sounds(BlockSoundGroup.WOOD).nonOpaque()), ItemGroup.DECORATIONS);
 
     // gooseberries
-    public static final Block CYPRESS_BRANCH = createBlock("cypress_branch", new CypressBranchBlock(AbstractBlock.Settings.of(Material.PLANT).ticksRandomly().noCollision().sounds(BlockSoundGroup.BAMBOO_SAPLING)), ItemGroup.DECORATIONS);
+    public static final Block CYPRESS_BRANCH = createBlock("cypress_branch", new CypressBranchBlock(FabricBlockSettings.of(Material.PLANT).ticksRandomly().noCollision().sounds(BlockSoundGroup.BAMBOO_SAPLING).breakByTool(FabricToolTags.SHEARS).breakByTool(FabricToolTags.HOES)), ItemGroup.DECORATIONS);
 
     // lilies
-    public static final Block BLUE_LILY = createBlockNoItem("blue_lily", new LilyFlowerBlock(BayouBluesItems.BLUE_LILY, AbstractBlock.Settings.copy(Blocks.LILY_PAD)));
-    public static final Block LIGHT_GRAY_LILY = createBlockNoItem("light_gray_lily", new LilyFlowerBlock(BayouBluesItems.LIGHT_GRAY_LILY, AbstractBlock.Settings.copy(Blocks.LILY_PAD)));
-    public static final Block CYAN_LILY = createBlockNoItem("cyan_lily", new LilyFlowerBlock(BayouBluesItems.CYAN_LILY, AbstractBlock.Settings.copy(Blocks.LILY_PAD)));
-    public static final Block LIGHT_BLUE_LILY = createBlockNoItem("light_blue_lily", new LilyFlowerBlock(BayouBluesItems.LIGHT_BLUE_LILY, AbstractBlock.Settings.copy(Blocks.LILY_PAD)));
-    public static final Block MAGENTA_LILY = createBlockNoItem("magenta_lily", new LilyFlowerBlock(BayouBluesItems.MAGENTA_LILY, AbstractBlock.Settings.copy(Blocks.LILY_PAD)));
-    public static final Block PINK_LILY = createBlockNoItem("pink_lily", new LilyFlowerBlock(BayouBluesItems.PINK_LILY, AbstractBlock.Settings.copy(Blocks.LILY_PAD)));
-    public static final Block PURPLE_LILY = createBlockNoItem("purple_lily", new LilyFlowerBlock(BayouBluesItems.PURPLE_LILY, AbstractBlock.Settings.copy(Blocks.LILY_PAD)));
-    public static final Block WHITE_LILY = createBlockNoItem("white_lily", new LilyFlowerBlock(BayouBluesItems.WHITE_LILY, AbstractBlock.Settings.copy(Blocks.LILY_PAD)));
+    public static final Block BLUE_LILY = createBlockNoItem("blue_lily", new LilyFlowerBlock(BayouBluesItems.BLUE_LILY, FabricBlockSettings.copy(Blocks.LILY_PAD)));
+    public static final Block LIGHT_GRAY_LILY = createBlockNoItem("light_gray_lily", new LilyFlowerBlock(BayouBluesItems.LIGHT_GRAY_LILY, FabricBlockSettings.copy(Blocks.LILY_PAD)));
+    public static final Block CYAN_LILY = createBlockNoItem("cyan_lily", new LilyFlowerBlock(BayouBluesItems.CYAN_LILY, FabricBlockSettings.copy(Blocks.LILY_PAD)));
+    public static final Block LIGHT_BLUE_LILY = createBlockNoItem("light_blue_lily", new LilyFlowerBlock(BayouBluesItems.LIGHT_BLUE_LILY, FabricBlockSettings.copy(Blocks.LILY_PAD)));
+    public static final Block MAGENTA_LILY = createBlockNoItem("magenta_lily", new LilyFlowerBlock(BayouBluesItems.MAGENTA_LILY, FabricBlockSettings.copy(Blocks.LILY_PAD)));
+    public static final Block PINK_LILY = createBlockNoItem("pink_lily", new LilyFlowerBlock(BayouBluesItems.PINK_LILY, FabricBlockSettings.copy(Blocks.LILY_PAD)));
+    public static final Block PURPLE_LILY = createBlockNoItem("purple_lily", new LilyFlowerBlock(BayouBluesItems.PURPLE_LILY, FabricBlockSettings.copy(Blocks.LILY_PAD)));
+    public static final Block WHITE_LILY = createBlockNoItem("white_lily", new LilyFlowerBlock(BayouBluesItems.WHITE_LILY, FabricBlockSettings.copy(Blocks.LILY_PAD)));
 
     public static final Block POTTED_BLUE_LILY = createBlockNoItem("potted_blue_lily", new FlowerPotBlock(BLUE_LILY, FabricBlockSettings.copy(Blocks.POTTED_ALLIUM)));
     public static final Block POTTED_LIGHT_GRAY_LILY = createBlockNoItem("potted_light_gray_lily", new FlowerPotBlock(LIGHT_GRAY_LILY, FabricBlockSettings.copy(Blocks.POTTED_ALLIUM)));
@@ -73,18 +72,18 @@ public class BayouBluesBlocks {
     public static final Block POTTED_WHITE_LILY = createBlockNoItem("potted_white_lily", new FlowerPotBlock(WHITE_LILY, FabricBlockSettings.copy(Blocks.POTTED_ALLIUM)));
 
     // algae
-    public static final Block ALGAE = createBlockNoItem("algae",  new AlgaeBlock(AbstractBlock.Settings.of(Material.PLANT).breakInstantly().sounds(BlockSoundGroup.LILY_PAD).nonOpaque().noCollision()));
-    public static final Block ALGAE_THATCH = createBlock("algae_thatch",  new ThatchBlock(Properties.ALGAE_THATCH), ItemGroup.BUILDING_BLOCKS);
-    public static final Block ALGAE_THATCH_SLAB = createBlock("algae_thatch_slab",  new ThatchSlabBlock(Properties.ALGAE_THATCH), ItemGroup.BUILDING_BLOCKS);
-    public static final Block ALGAE_THATCH_STAIRS = createBlock("algae_thatch_stairs",  new ThatchStairsBlock(ALGAE_THATCH.getDefaultState(), Properties.ALGAE_THATCH), ItemGroup.BUILDING_BLOCKS);
+    public static final Block ALGAE = createBlockNoItem("algae",  new AlgaeBlock(FabricBlockSettings.of(Material.PLANT).breakInstantly().sounds(BlockSoundGroup.LILY_PAD).nonOpaque().noCollision()));
+    public static final Block ALGAE_THATCH = createBlock("algae_thatch",  new ThatchBlock(Settings.ALGAE_THATCH), ItemGroup.BUILDING_BLOCKS);
+    public static final Block ALGAE_THATCH_SLAB = createBlock("algae_thatch_slab",  new ThatchSlabBlock(Settings.ALGAE_THATCH), ItemGroup.BUILDING_BLOCKS);
+    public static final Block ALGAE_THATCH_STAIRS = createBlock("algae_thatch_stairs",  new ThatchStairsBlock(ALGAE_THATCH.getDefaultState(), Settings.ALGAE_THATCH), ItemGroup.BUILDING_BLOCKS);
 
     // other
-    public static final Block BEARD_MOSS_BLOCK = createFuelBlock("beard_moss_block", new BeardMossBlockBlock(AbstractBlock.Settings.of(Material.PLANT).strength(0.1F).sounds(BlockSoundGroup.GRASS).nonOpaque()), 800, ItemGroup.DECORATIONS);
-    public static final Block BEARD_MOSS = createFuelBlock("beard_moss", new BeardMossBlock(AbstractBlock.Settings.of(Material.PLANT).breakInstantly().sounds(BlockSoundGroup.GRASS).nonOpaque().noCollision().ticksRandomly()), 800, ItemGroup.DECORATIONS);
-    public static final Block GIANT_FERN = createBlock("giant_fern", new TallPlantBlock(AbstractBlock.Settings.copy(Blocks.TALL_GRASS)), ItemGroup.DECORATIONS);
+    public static final Block BEARD_MOSS_BLOCK = createFuelBlock("beard_moss_block", new BeardMossBlockBlock(FabricBlockSettings.of(Material.PLANT).strength(0.1F).sounds(BlockSoundGroup.GRASS).nonOpaque()), 800, ItemGroup.DECORATIONS);
+    public static final Block BEARD_MOSS = createFuelBlock("beard_moss", new BeardMossBlock(FabricBlockSettings.of(Material.PLANT).breakInstantly().sounds(BlockSoundGroup.GRASS).nonOpaque().noCollision().ticksRandomly()), 800, ItemGroup.DECORATIONS);
+    public static final Block GIANT_FERN = createBlock("giant_fern", new TallPlantBlock(FabricBlockSettings.copy(Blocks.TALL_GRASS)), ItemGroup.DECORATIONS);
 
-    public static class Properties {
-        public static final AbstractBlock.Settings ALGAE_THATCH = FabricBlockSettings.of(Material.SOLID_ORGANIC, MaterialColor.LIME).strength(0.5F).sounds(BlockSoundGroup.GRASS).nonOpaque().breakByTool(FabricToolTags.HOES);
+    public static class Settings {
+        public static final FabricBlockSettings ALGAE_THATCH = FabricBlockSettings.of(Material.SOLID_ORGANIC, MaterialColor.LIME).strength(0.5F).sounds(BlockSoundGroup.GRASS).nonOpaque().breakByTool(FabricToolTags.HOES);
     }
 
     public static Block createBlock(String id, Block block, ItemGroup group) {
@@ -101,5 +100,17 @@ public class BayouBluesBlocks {
     public static <B extends Block> B createFuelBlock(String name, B block, int burnTime, @Nullable ItemGroup group) {
         BayouBluesItems.createItem(name, new FuelBlockItem(block, burnTime, (new Item.Settings()).group(group)));
         return block;
+    }
+
+    public static Pair<TerraformSignBlock, TerraformWallSignBlock> createSignBlock(String name, Pair<TerraformSignBlock, TerraformWallSignBlock> signBlockPair) {
+        SignBlock sign = signBlockPair.getFirst();
+        WallSignBlock wallSign = signBlockPair.getSecond();
+
+        createBlockNoItem(name + "_sign", sign);
+        createBlockNoItem(name + "_wall_sign", wallSign);
+
+        BayouBluesItems.registerSignItem(name + "_sign", sign, wallSign, new Item.Settings().maxCount(16).group(ItemGroup.DECORATIONS));
+
+        return signBlockPair;
     }
 }

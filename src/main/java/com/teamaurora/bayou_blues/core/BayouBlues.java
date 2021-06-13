@@ -7,6 +7,7 @@ import com.teamaurora.bayou_blues.core.registry.BayouBluesBiomes;
 import com.teamaurora.bayou_blues.core.registry.BayouBluesEntities;
 import com.teamaurora.bayou_blues.core.registry.BayouBluesFeatures;
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,11 +20,19 @@ public class BayouBlues implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        BayouBluesConfig.registerConfig();
+        BayouBluesEntities.init();
+        BayouBluesEvents.init();
+        BayouBluesBiomes.init();
         BayouBluesFeatures.Configured.registerConfiguredFeatures();
         BayouBluesCompat.init();
         BayouBluesBiomeFeatures.init();
 
         log(Level.INFO, "Initializing");
+    }
+
+    public static Identifier id(String path) {
+        return new Identifier(MODID, path);
     }
 
     public static void log(Level level, String message){

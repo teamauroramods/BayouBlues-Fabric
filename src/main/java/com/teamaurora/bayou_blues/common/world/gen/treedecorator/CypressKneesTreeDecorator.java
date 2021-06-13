@@ -57,17 +57,17 @@ public class CypressKneesTreeDecorator extends TreeDecorator {
                                 if ((world.getBlockState(newPos.down()).getBlock() == Blocks.GRASS_BLOCK && world.getBlockState(newPos).isAir())) {
                                     if (rand.nextInt(9) == 0) {
                                         if (rand.nextInt(3) == 0 && world.getBlockState(newPos.up()).isAir()) {
-                                            ((DoubleCypressKneeBlock) BayouBluesBlocks.LARGE_CYPRESS_KNEE.get()).placeAt(world, newPos, 3);
+                                            ((DoubleCypressKneeBlock) BayouBluesBlocks.LARGE_CYPRESS_KNEE).placeAt(world, newPos, 3);
                                         } else {
-                                            world.setBlockState(newPos, BayouBluesBlocks.CYPRESS_KNEE.get().getDefaultState().with(CypressKneeBlock.WATERLOGGED, false), 3);
+                                            world.setBlockState(newPos, BayouBluesBlocks.CYPRESS_KNEE.getDefaultState().with(CypressKneeBlock.WATERLOGGED, false), 3);
                                         }
                                     }
                                 } else if (world.getBlockState(newPos).getBlock() == Blocks.WATER && world.getBlockState(newPos.down()).isOpaque()) {
                                     if (rand.nextInt(8) == 0) {
                                         if (rand.nextInt(4) != 0 && world.getBlockState(newPos.up()).isAir()) {
-                                            ((DoubleCypressKneeBlock) BayouBluesBlocks.LARGE_CYPRESS_KNEE.get()).placeAt(world, newPos, 3);
+                                            ((DoubleCypressKneeBlock) BayouBluesBlocks.LARGE_CYPRESS_KNEE).placeAt(world, newPos, 3);
                                         } else {
-                                            world.setBlockState(newPos, BayouBluesBlocks.CYPRESS_KNEE.get().getDefaultState().with(CypressKneeBlock.WATERLOGGED, true), 3);
+                                            world.setBlockState(newPos, BayouBluesBlocks.CYPRESS_KNEE.getDefaultState().with(CypressKneeBlock.WATERLOGGED, true), 3);
                                         }
                                     }
                                 }
