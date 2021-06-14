@@ -3,7 +3,7 @@
   "id": "bayou_blues",
   "version": "${version}",
   "name": "BayouBlues",
-  "description": "A fabric port of a swampy new biome!",
+  "description": "A swampy new biome!",
   "authors": [
     "Team Aurora"
   ],
