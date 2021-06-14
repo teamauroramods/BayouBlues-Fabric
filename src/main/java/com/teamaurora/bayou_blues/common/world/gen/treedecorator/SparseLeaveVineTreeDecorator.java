@@ -28,35 +28,35 @@ public class SparseLeaveVineTreeDecorator extends TreeDecorator {
             if (random.nextInt(16) == 0) {
                 BlockPos blockpos = dir.west();
                 if (Feature.isAir(worldAccess, blockpos)) {
-                    this.placeVine(worldAccess, blockpos, VineBlock.EAST, pos3, blockBox);
+                    this.placeVines(worldAccess, blockpos, VineBlock.EAST, pos3, blockBox);
                 }
             }
 
             if (random.nextInt(16) == 0) {
                 BlockPos blockpos1 = dir.east();
                 if (Feature.isAir(worldAccess, blockpos1)) {
-                    this.placeVine(worldAccess, blockpos1, VineBlock.WEST, pos3, blockBox);
+                    this.placeVines(worldAccess, blockpos1, VineBlock.WEST, pos3, blockBox);
                 }
             }
 
             if (random.nextInt(16) == 0) {
                 BlockPos blockpos2 = dir.north();
                 if (Feature.isAir(worldAccess, blockpos2)) {
-                    this.placeVine(worldAccess, blockpos2, VineBlock.SOUTH, pos3, blockBox);
+                    this.placeVines(worldAccess, blockpos2, VineBlock.SOUTH, pos3, blockBox);
                 }
             }
 
             if (random.nextInt(16) == 0) {
                 BlockPos blockpos3 = dir.south();
                 if (Feature.isAir(worldAccess, blockpos3)) {
-                    this.placeVine(worldAccess, blockpos3, VineBlock.NORTH, pos3, blockBox);
+                    this.placeVines(worldAccess, blockpos3, VineBlock.NORTH, pos3, blockBox);
                 }
             }
 
         });
     }
 
-    private void placeVine(ModifiableTestableWorld world, BlockPos pos, BooleanProperty booleanProperty, Set<BlockPos> pos2, BlockBox blockBox) {
+    private void placeVines(ModifiableTestableWorld world, BlockPos pos, BooleanProperty booleanProperty, Set<BlockPos> pos2, BlockBox blockBox) {
         this.placeVine(world, pos, booleanProperty, pos2, blockBox);
         int i = 4;
 
@@ -64,7 +64,6 @@ public class SparseLeaveVineTreeDecorator extends TreeDecorator {
             this.placeVine(world, blockpos, booleanProperty, pos2, blockBox);
             blockpos = blockpos.down();
         }
-
     }
 
     static {

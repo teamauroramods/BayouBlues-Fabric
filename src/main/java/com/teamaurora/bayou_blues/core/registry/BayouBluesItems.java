@@ -66,6 +66,6 @@ public class BayouBluesItems {
     }
 
     public static TerraformBoatItem registerBoatItem(String name, Supplier<EntityType<TerraformBoatEntity>> boatType) {
-        return Registry.register(Registry.ITEM, BayouBlues.id(name), new TerraformBoatItem(boatType, new Item.Settings().group(ItemGroup.TRANSPORTATION).maxCount(1)));
+        return Registry.register(Registry.ITEM, BayouBlues.id(name + "_boat"), new TerraformBoatItem(boatType, new Item.Settings().group(ItemGroup.TRANSPORTATION).maxCount(1)));
     }
 }

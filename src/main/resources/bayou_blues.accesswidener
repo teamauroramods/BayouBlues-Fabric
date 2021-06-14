@@ -8,5 +8,6 @@ accessible  method  net/minecraft/block/WoodenButtonBlock    <init>  (Lnet/minec
 accessible  method  net/minecraft/block/StairsBlock  <init>  (Lnet/minecraft/block/BlockState;Lnet/minecraft/block/AbstractBlock$Settings;)V
 accessible  method  net/minecraft/block/PressurePlateBlock   <init>  (Lnet/minecraft/block/PressurePlateBlock$ActivationRule;Lnet/minecraft/block/AbstractBlock$Settings;)V
 accessible  method  net/minecraft/world/gen/tree/TreeDecoratorType  <init>  (Lcom/mojang/serialization/Codec;)V
+accessible method net/minecraft/world/gen/feature/TreeFeatureConfig <init> (Lnet/minecraft/world/gen/stateprovider/BlockStateProvider;Lnet/minecraft/world/gen/stateprovider/BlockStateProvider;Lnet/minecraft/world/gen/foliage/FoliagePlacer;Lnet/minecraft/world/gen/trunk/TrunkPlacer;Lnet/minecraft/world/gen/feature/size/FeatureSize;Ljava/util/List;IB;net/minecraft/world/Heightmap$Type)V
 
 accessible  method  net/minecraft/block/SaplingBlock <init>  (Lnet/minecraft/block/sapling/SaplingGenerator;Lnet/minecraft/block/AbstractBlock$Settings;)V

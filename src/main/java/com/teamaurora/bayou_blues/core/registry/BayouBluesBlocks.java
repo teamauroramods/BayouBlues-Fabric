@@ -15,6 +15,7 @@ import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import com.teamaurora.bayou_blues.common.block.trees.CypressTree;
 import net.minecraft.block.*;
 import net.minecraft.entity.EntityType;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.sound.BlockSoundGroup;
@@ -88,7 +89,7 @@ public class BayouBluesBlocks {
 
     public static Block createBlock(String id, Block block, ItemGroup group) {
         Registry.register(Registry.BLOCK, BayouBlues.id(id), block);
-        Registry.register(Registry.ITEM, BayouBlues.id(id), new Item(new Item.Settings().group(group)));
+        Registry.register(Registry.ITEM, BayouBlues.id(id), new BlockItem(block, new Item.Settings().group(group)));
         return block;
     }
 
@@ -98,6 +99,7 @@ public class BayouBluesBlocks {
     }
 
     public static <B extends Block> B createFuelBlock(String name, B block, int burnTime, @Nullable ItemGroup group) {
+        createBlockNoItem(name, block);
         BayouBluesItems.createItem(name, new FuelBlockItem(block, burnTime, (new Item.Settings()).group(group)));
         return block;
     }

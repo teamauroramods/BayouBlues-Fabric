@@ -2,6 +2,7 @@ package com.teamaurora.bayou_blues.client;
 
 import com.teamaurora.bayou_blues.core.registry.BayouBluesBlocks;
 import com.teamaurora.bayou_blues.core.registry.BayouBluesEntities;
+import com.terraformersmc.terraform.sign.SpriteIdentifierRegistry;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
@@ -15,10 +16,11 @@ import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.color.world.FoliageColors;
 import net.minecraft.client.color.world.GrassColors;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.TexturedRenderLayers;
 import net.minecraft.client.render.entity.BoatEntityRenderer;
+import net.minecraft.client.util.SpriteIdentifier;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -68,6 +70,7 @@ public class BayouBluesClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(BayouBluesBlocks.GIANT_FERN, RenderLayer.getCutout());
 
         EntityRendererRegistry.INSTANCE.register(BayouBluesEntities.BAYOU_BOAT, (dispatcher, context) -> new BoatEntityRenderer(dispatcher));
+        SpriteIdentifierRegistry.INSTANCE.addIdentifier(new SpriteIdentifier(TexturedRenderLayers.SIGNS_ATLAS_TEXTURE, BayouBluesBlocks.CYPRESS_SIGNS.getFirst().getTexture()));
     }
 
     public static void registerBlockColors() {

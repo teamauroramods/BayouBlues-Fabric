@@ -48,15 +48,11 @@ public class BayouBluesBiomes {
         }
     }
 
-    /*
-    public static void addBiomeTypes() {
-        BiomeDictionary.addTypes(BAYOU, BiomeDictionary.Type.SWAMP, BiomeDictionary.Type.LUSH, BiomeDictionary.Type.RARE, BiomeDictionary.Type.OVERWORLD);
-        BiomeDictionary.addTypes(BAYOU_HILLS, BiomeDictionary.Type.SWAMP, BiomeDictionary.Type.LUSH, BiomeDictionary.Type.HILLS, BiomeDictionary.Type.RARE, BiomeDictionary.Type.OVERWORLD);
-    }
-    */
-
     private static Biome makeBayouBiome(float depth, float scale) {
-        BayouBluesBiomeFeatures.addFeatures();
+        SpawnSettings.Builder spawns = new SpawnSettings.Builder();
+        GenerationSettings.Builder builder = new GenerationSettings.Builder();
+
+        BayouBluesBiomeFeatures.withBayouFeatures(builder, spawns);
 
         return (new Biome.Builder())
                 .precipitation(Biome.Precipitation.RAIN)
@@ -74,9 +70,10 @@ public class BayouBluesBiomes {
                         .foliageColor(0x69AA2F)
                         .grassColor(0x6CC147)
                         .build())
-                .spawnSettings(new SpawnSettings.Builder().build())
-                .generationSettings((new GenerationSettings.Builder())
+                .spawnSettings(spawns.build())
+                .generationSettings((builder)
                         .surfaceBuilder(ConfiguredSurfaceBuilders.SWAMP)
+
                         .build()).build();
     }
 

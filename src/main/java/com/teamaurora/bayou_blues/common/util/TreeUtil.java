@@ -47,6 +47,7 @@ public final class TreeUtil {
     }
 
     public static boolean isValidGround(WorldAccess world, BlockPos pos) {
-        return world.getBlockState(pos).canPlaceAt(world, pos);
+        BlockState state = world.getBlockState(pos);
+        return state.isOf(Blocks.GRASS_BLOCK) || state.isOf(Blocks.DIRT) || state.isOf(Blocks.COARSE_DIRT) || state.isOf(Blocks.PODZOL) || state.isOf(Blocks.FARMLAND);
     }
 }
