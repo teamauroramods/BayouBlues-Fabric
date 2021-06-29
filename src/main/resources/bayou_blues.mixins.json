@@ -3,8 +3,7 @@
   "package": "com.teamaurora.bayou_blues.core.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "BoneMealItemMixin",
-    "TallPlantBlockMixin"
+    "BoneMealItemMixin"
   ],
   "client": [],
   "server": [],

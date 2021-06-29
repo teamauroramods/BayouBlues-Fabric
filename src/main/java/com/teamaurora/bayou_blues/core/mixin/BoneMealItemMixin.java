@@ -52,14 +52,14 @@ public class BoneMealItemMixin {
             } else if (state.getBlock() instanceof LilyFlowerBlock && BayouBluesConfig.get().lilyFlowers.lilyBonemealBehavior == 2) {
                 Block.dropStack(world, pos, state.getBlock().getPickStack(world, pos, state));
                 success = true;
-            }/* else if (state.getBlock() == Blocks.LARGE_FERN) {
+            } else if (state.getBlock() == Blocks.LARGE_FERN) {
                 if (state.get(TallPlantBlock.HALF) == DoubleBlockHalf.LOWER) {
-                    ((TallPlantBlock) BayouBluesBlocks.GIANT_FERN).placeAt(world, pos, 3);
+                     ((TallPlantBlock) BayouBluesBlocks.GIANT_FERN).placeAt(world, pos, 3);
                 } else {
                     ((TallPlantBlock) BayouBluesBlocks.GIANT_FERN).placeAt(world, pos.down(), 3);
                 }
                 success = true;
-            }*/
+            }
 
             if (success) {
                 context.getStack().decrement(decrementAmount);
