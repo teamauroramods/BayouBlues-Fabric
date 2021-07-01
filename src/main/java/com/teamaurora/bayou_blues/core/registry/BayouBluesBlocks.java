@@ -42,13 +42,13 @@ public class BayouBluesBlocks {
     public static final Block CYPRESS_BUTTON = createBlock("cypress_button", new WoodenButtonBlock(FabricBlockSettings.copy(Blocks.OAK_BUTTON)), ItemGroup.REDSTONE);
     public static final Block CYPRESS_DOOR = createBlock("cypress_door", new DoorBlock(FabricBlockSettings.copy(Blocks.OAK_DOOR)), ItemGroup.REDSTONE);
     public static final Block CYPRESS_TRAPDOOR = createBlock("cypress_trapdoor", new TrapdoorBlock(FabricBlockSettings.copy(Blocks.OAK_TRAPDOOR)), ItemGroup.REDSTONE);
-    public static final Pair<TerraformSignBlock, TerraformWallSignBlock> CYPRESS_SIGNS = createSignBlock("cypress", Pair.of(new TerraformSignBlock(BayouBlues.id("entity/signs/cypress"), FabricBlockSettings.copyOf(Blocks.OAK_SIGN).materialColor(MaterialColor.PURPLE_TERRACOTTA).breakByTool(FabricToolTags.AXES)), new TerraformWallSignBlock(BayouBlues.id("entity/signs/cypress"), FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN).materialColor(MaterialColor.PURPLE_TERRACOTTA).breakByTool(FabricToolTags.AXES))));
+    public static final Pair<TerraformSignBlock, TerraformWallSignBlock> CYPRESS_SIGNS = createSignBlock("cypress", Pair.of(new TerraformSignBlock(BayouBlues.id("entity/signs/cypress"), FabricBlockSettings.copyOf(Blocks.OAK_SIGN).materialColor(MapColor.TERRACOTTA_PURPLE).breakByTool(FabricToolTags.AXES)), new TerraformWallSignBlock(BayouBlues.id("entity/signs/cypress"), FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN).materialColor(MapColor.TERRACOTTA_PURPLE).breakByTool(FabricToolTags.AXES))));
 
     public static final Block CYPRESS_LEAF_CARPET = createBlock("cypress_leaf_carpet", new LeafCarpetBlock(FabricBlockSettings.copy(CYPRESS_LEAVES)), ItemGroup.DECORATIONS);
     public static final Block HANGING_CYPRESS_LEAVES = createBlock("hanging_cypress_leaves", new HangingCypressLeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).breakByTool(FabricToolTags.SHEARS).breakByTool(FabricToolTags.HOES)), ItemGroup.DECORATIONS);
 
-    public static final Block CYPRESS_KNEE = createBlock("cypress_knee", new CypressKneeBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.BROWN).strength(2.0F).sounds(BlockSoundGroup.WOOD).nonOpaque()), ItemGroup.DECORATIONS);
-    public static final Block LARGE_CYPRESS_KNEE = createBlock("large_cypress_knee", new DoubleCypressKneeBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.BROWN).strength(2.0F).sounds(BlockSoundGroup.WOOD).nonOpaque()), ItemGroup.DECORATIONS);
+    public static final Block CYPRESS_KNEE = createBlock("cypress_knee", new CypressKneeBlock(FabricBlockSettings.of(Material.WOOD, MapColor.BROWN).strength(2.0F).sounds(BlockSoundGroup.WOOD).nonOpaque()), ItemGroup.DECORATIONS);
+    public static final Block LARGE_CYPRESS_KNEE = createBlock("large_cypress_knee", new DoubleCypressKneeBlock(FabricBlockSettings.of(Material.WOOD, MapColor.BROWN).strength(2.0F).sounds(BlockSoundGroup.WOOD).nonOpaque()), ItemGroup.DECORATIONS);
 
     // gooseberries
     public static final Block CYPRESS_BRANCH = createBlock("cypress_branch", new CypressBranchBlock(FabricBlockSettings.of(Material.PLANT).ticksRandomly().noCollision().sounds(BlockSoundGroup.BAMBOO_SAPLING).breakByTool(FabricToolTags.SHEARS).breakByTool(FabricToolTags.HOES)), ItemGroup.DECORATIONS);
@@ -84,7 +84,7 @@ public class BayouBluesBlocks {
     public static final Block GIANT_FERN = createBlock("giant_fern", new TallPlantBlock(FabricBlockSettings.copy(Blocks.TALL_GRASS)), ItemGroup.DECORATIONS);
 
     public static class Settings {
-        public static final FabricBlockSettings ALGAE_THATCH = FabricBlockSettings.of(Material.SOLID_ORGANIC, MaterialColor.LIME).strength(0.5F).sounds(BlockSoundGroup.GRASS).nonOpaque().breakByTool(FabricToolTags.HOES);
+        public static final FabricBlockSettings ALGAE_THATCH = FabricBlockSettings.of(Material.SOLID_ORGANIC, MapColor.LIME).strength(0.5F).sounds(BlockSoundGroup.GRASS).nonOpaque().breakByTool(FabricToolTags.HOES);
     }
 
     public static Block createBlock(String id, Block block, ItemGroup group) {

@@ -2,7 +2,6 @@ package com.teamaurora.bayou_blues.common.block.wood;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.MaterialColor;
 import net.minecraft.block.PillarBlock;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
@@ -16,8 +15,6 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-
-import java.util.function.Supplier;
 
 public class StrippedLogBlock extends PillarBlock {
     private Block stripped;
@@ -44,7 +41,7 @@ public class StrippedLogBlock extends PillarBlock {
 
         MiningToolItem tool = (MiningToolItem) held;
 
-        if(stripped != null && (tool.isEffectiveOn(state) || tool.getMiningSpeedMultiplier(heldStack, state) > 1.0F)) {
+        if(stripped != null && (tool.isSuitableFor(state) || tool.getMiningSpeedMultiplier(heldStack, state) > 1.0F)) {
             world.playSound(player, pos, SoundEvents.ITEM_AXE_STRIP, SoundCategory.BLOCKS, 1.0F, 1.0F);
 
             if(!world.isClient) {

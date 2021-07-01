@@ -2,16 +2,15 @@ package com.teamaurora.bayou_blues.common.world.gen.treedecorator;
 
 import com.mojang.serialization.Codec;
 import com.teamaurora.bayou_blues.common.block.CypressBranchBlock;
-import com.teamaurora.bayou_blues.common.block.DoubleCypressKneeBlock;
 import com.teamaurora.bayou_blues.core.registry.BayouBluesBlocks;
 import com.teamaurora.bayou_blues.core.registry.BayouBluesFeatures;
-import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockBox;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.StructureWorldAccess;
-import net.minecraft.world.gen.tree.TreeDecorator;
-import net.minecraft.world.gen.tree.TreeDecoratorType;
+import net.minecraft.world.gen.treedecorator.TreeDecorator;
+import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
+
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
