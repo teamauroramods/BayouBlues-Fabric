@@ -7,10 +7,8 @@ sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
 archivesBaseName = project.archives_base_name
-version = project.mod_version
+version = "${project.mod_version}+${project.minecraft_version}-fabric"
 group = project.maven_group
-
-loom.accessWidener "src/main/resources/bayou_blues.accesswidener"
 
 dependencies {
 	// Main Fabric
@@ -20,17 +18,15 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 
 	// Cloth
-	modApi "me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}"
+	modImplementation "me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}"
 	include "me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}"
 
 	// Modmenu
 	modCompileOnly("com.terraformersmc:modmenu:${project.modmenu_version}") {transitive(false)}
 	modRuntime("com.terraformersmc:modmenu:${project.modmenu_version}")
 
-	modApi "com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_wood_api_version}"
+	modImplementation "com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_wood_api_version}"
 	include "com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_wood_api_version}"
-	modApi "com.terraformersmc.terraform-api:terraform-biome-builder-api-v1:${project.terraform_biome_builder_api_version}"
-	include "com.terraformersmc.terraform-api:terraform-biome-builder-api-v1:${project.terraform_biome_builder_api_version}"
 }
 
 repositories {
@@ -44,6 +40,10 @@ repositories {
 	}
 }
 
+loom {
+	accessWidener "src/main/resources/${project.archives_base_name}.accesswidener"
+}
+
 processResources {
 	inputs.property "version", project.version
 
@@ -52,15 +52,20 @@ processResources {
 	}
 }
 
-tasks.withType(JavaCompile) {
-	options.encoding = "UTF-8"
+tasks.withType(JavaCompile).configureEach {
+	it.options.encoding = "UTF-8"
+	def targetVersion = 8
+	if (JavaVersion.current().isJava9Compatible()) {
+		it.options.release = targetVersion
+	}
 }
 
-task sourcesJar(type: Jar, dependsOn: classes) {
-	classifier = "sources"
-	from sourceSets.main.allSource
+java {
+	withSourcesJar()
 }
 
 jar {
-	from "LICENSE"
+	from("LICENSE") {
+		rename { "${it}_${project.archivesBaseName}"}
+	}
 }

@@ -2,6 +2,7 @@ package com.teamaurora.bayou_blues.core.registry;
 
 import com.mojang.datafixers.util.Pair;
 import com.teamaurora.bayou_blues.common.block.*;
+import com.teamaurora.bayou_blues.common.block.publicMinecraft.*;
 import com.teamaurora.bayou_blues.common.block.thatch.ThatchBlock;
 import com.teamaurora.bayou_blues.common.block.thatch.ThatchSlabBlock;
 import com.teamaurora.bayou_blues.common.block.thatch.ThatchStairsBlock;
@@ -31,17 +32,17 @@ public class BayouBluesBlocks {
     public static final Block CYPRESS_LOG= createBlock("cypress_log", new StrippedLogBlock(STRIPPED_CYPRESS_LOG, FabricBlockSettings.copy(Blocks.OAK_LOG)), ItemGroup.BUILDING_BLOCKS);
     public static final Block CYPRESS_WOOD = createBlock("cypress_wood", new StrippedLogBlock(STRIPPED_CYPRESS_WOOD, FabricBlockSettings.copy(Blocks.OAK_WOOD)), ItemGroup.BUILDING_BLOCKS);
     public static final Block CYPRESS_LEAVES = createBlock("cypress_leaves", new LeavesBlock(FabricBlockSettings.of(Material.LEAVES).strength(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque().allowsSpawning((BlockState state, BlockView reader, BlockPos pos, EntityType<?> entity)->(entity == EntityType.OCELOT || entity == EntityType.PARROT)).suffocates((BlockState state, BlockView reader, BlockPos pos)->false).blockVision((BlockState state, BlockView reader, BlockPos pos)->false)), ItemGroup.DECORATIONS);
-    public static final Block CYPRESS_SAPLING = createBlock("cypress_sapling", new SaplingBlock(new CypressTree(), FabricBlockSettings.copy(Blocks.OAK_SAPLING)), ItemGroup.DECORATIONS);
+    public static final Block CYPRESS_SAPLING = createBlock("cypress_sapling", new BBSaplingBlock(new CypressTree(), FabricBlockSettings.copy(Blocks.OAK_SAPLING)), ItemGroup.DECORATIONS);
     public static final Block POTTED_CYPRESS_SAPLING = createBlockNoItem("potted_cypress_sapling", new FlowerPotBlock(CYPRESS_SAPLING, FabricBlockSettings.copy(Blocks.POTTED_ALLIUM)));
     public static final Block CYPRESS_PLANKS = createBlock("cypress_planks", new Block(FabricBlockSettings.copy(Blocks.OAK_PLANKS)), ItemGroup.BUILDING_BLOCKS);
     public static final Block CYPRESS_SLAB = createBlock("cypress_slab", new SlabBlock(FabricBlockSettings.copy(Blocks.OAK_SLAB)), ItemGroup.BUILDING_BLOCKS);
-    public static final Block CYPRESS_STAIRS = createBlock("cypress_stairs", new StairsBlock(CYPRESS_PLANKS.getDefaultState(), FabricBlockSettings.copy(Blocks.OAK_STAIRS)), ItemGroup.BUILDING_BLOCKS);
-    public static final Block CYPRESS_PRESSURE_PLATE = createBlock("cypress_pressure_plate", new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copy(Blocks.OAK_PRESSURE_PLATE)), ItemGroup.REDSTONE);
+    public static final Block CYPRESS_STAIRS = createBlock("cypress_stairs", new BBStairsBlock(CYPRESS_PLANKS.getDefaultState(), FabricBlockSettings.copy(Blocks.OAK_STAIRS)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block CYPRESS_PRESSURE_PLATE = createBlock("cypress_pressure_plate", new BBPressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copy(Blocks.OAK_PRESSURE_PLATE)), ItemGroup.REDSTONE);
     public static final Block CYPRESS_FENCE = createFuelBlock("cypress_fence", new FenceBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE)), 300, ItemGroup.DECORATIONS);
     public static final Block CYPRESS_FENCE_GATE = createFuelBlock("cypress_fence_gate", new FenceGateBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE_GATE)), 300, ItemGroup.REDSTONE);
-    public static final Block CYPRESS_BUTTON = createBlock("cypress_button", new WoodenButtonBlock(FabricBlockSettings.copy(Blocks.OAK_BUTTON)), ItemGroup.REDSTONE);
-    public static final Block CYPRESS_DOOR = createBlock("cypress_door", new DoorBlock(FabricBlockSettings.copy(Blocks.OAK_DOOR)), ItemGroup.REDSTONE);
-    public static final Block CYPRESS_TRAPDOOR = createBlock("cypress_trapdoor", new TrapdoorBlock(FabricBlockSettings.copy(Blocks.OAK_TRAPDOOR)), ItemGroup.REDSTONE);
+    public static final Block CYPRESS_BUTTON = createBlock("cypress_button", new BBWoodenButtonBlock(FabricBlockSettings.copy(Blocks.OAK_BUTTON)), ItemGroup.REDSTONE);
+    public static final Block CYPRESS_DOOR = createBlock("cypress_door", new BBDoorBlock(FabricBlockSettings.copy(Blocks.OAK_DOOR)), ItemGroup.REDSTONE);
+    public static final Block CYPRESS_TRAPDOOR = createBlock("cypress_trapdoor", new BBTrapdoorBlock(FabricBlockSettings.copy(Blocks.OAK_TRAPDOOR)), ItemGroup.REDSTONE);
     public static final Pair<TerraformSignBlock, TerraformWallSignBlock> CYPRESS_SIGNS = createSignBlock("cypress", Pair.of(new TerraformSignBlock(BayouBlues.id("entity/signs/cypress"), FabricBlockSettings.copyOf(Blocks.OAK_SIGN).materialColor(MapColor.TERRACOTTA_PURPLE).breakByTool(FabricToolTags.AXES)), new TerraformWallSignBlock(BayouBlues.id("entity/signs/cypress"), FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN).materialColor(MapColor.TERRACOTTA_PURPLE).breakByTool(FabricToolTags.AXES))));
 
     public static final Block CYPRESS_LEAF_CARPET = createBlock("cypress_leaf_carpet", new LeafCarpetBlock(FabricBlockSettings.copy(CYPRESS_LEAVES)), ItemGroup.DECORATIONS);
