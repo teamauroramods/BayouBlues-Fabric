@@ -54,9 +54,9 @@ public class BoneMealItemMixin {
                 success = true;
             } else if (state.getBlock() == Blocks.LARGE_FERN) {
                 if (state.get(TallPlantBlock.HALF) == DoubleBlockHalf.LOWER) {
-                     ((TallPlantBlock) BayouBluesBlocks.GIANT_FERN).placeAt(world, pos, 3);
+                     ((TallPlantBlock) BayouBluesBlocks.GIANT_FERN).placeAt(world, state, pos, 3);
                 } else {
-                    ((TallPlantBlock) BayouBluesBlocks.GIANT_FERN).placeAt(world, pos.down(), 3);
+                    ((TallPlantBlock) BayouBluesBlocks.GIANT_FERN).placeAt(world, state, pos.down(), 3);
                 }
                 success = true;
             }

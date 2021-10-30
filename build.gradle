@@ -1,10 +1,10 @@
 plugins {
-	id 'fabric-loom' version '0.7-SNAPSHOT'
+	id 'fabric-loom' version '0.9-SNAPSHOT'
 	id 'maven-publish'
 }
 
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
+sourceCompatibility = JavaVersion.VERSION_16
+targetCompatibility = JavaVersion.VERSION_16
 
 archivesBaseName = project.archives_base_name
 version = "${project.mod_version}+${project.minecraft_version}-fabric"
@@ -27,9 +27,18 @@ dependencies {
 
 	modImplementation "com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_wood_api_version}"
 	include "com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_wood_api_version}"
+
+	// Differentiate //
+//	modImplementation "curse.maven:differentiate-fabric-525575:${project.differentiate_version}"
+//	include "curse.maven:differentiate-fabric-525575:${project.differentiate_version}"
+	modImplementation "co.eltrut:differentiate-1.1.0"
+	include "co.eltrut:differentiate-1.1.0"
 }
 
 repositories {
+	flatDir {
+		dirs 'libs'
+	}
 	maven {
 		name = 'TerraformersMC Maven'
 		url = 'https://maven.terraformersmc.com/'
@@ -38,10 +47,13 @@ repositories {
 		name = 'Shedaniel Maven'
 		url "https://maven.shedaniel.me/"
 	}
+	maven {
+		url = "https://www.cursemaven.com"
+	}
 }
 
 loom {
-	accessWidener "src/main/resources/${project.archives_base_name}.accesswidener"
+	accessWidenerPath = file("src/main/resources/${project.archives_base_name}.accesswidener")
 }
 
 processResources {
@@ -54,10 +66,8 @@ processResources {
 
 tasks.withType(JavaCompile).configureEach {
 	it.options.encoding = "UTF-8"
-	def targetVersion = 8
-	if (JavaVersion.current().isJava9Compatible()) {
-		it.options.release = targetVersion
-	}
+
+	it.options.release = 16
 }
 
 java {
@@ -68,4 +78,30 @@ jar {
 	from("LICENSE") {
 		rename { "${it}_${project.archivesBaseName}"}
 	}
+}
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			artifact(remapJar) {
+				builtBy remapJar
+			}
+			artifact(sourcesJar) {
+				builtBy remapSourcesJar
+			}
+		}
+	}
+
+	repositories {
+	}
+}
+
+processResources {
+	if (project.getProperties().containsKey("auto_datagen") && Boolean.parseBoolean("${project.getProperties().get("auto_datagen")}")) {
+		finalizedBy runData
+	}
+}
+
+sourceSets.main.resources {
+	srcDirs += "$projectDir/src/generated/resources"
 }

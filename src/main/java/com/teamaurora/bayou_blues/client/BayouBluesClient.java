@@ -69,7 +69,7 @@ public class BayouBluesClient implements ClientModInitializer {
 
         BlockRenderLayerMap.INSTANCE.putBlock(BayouBluesBlocks.GIANT_FERN, RenderLayer.getCutout());
 
-        EntityRendererRegistry.INSTANCE.register(BayouBluesEntities.BAYOU_BOAT, (dispatcher, context) -> new BoatEntityRenderer(dispatcher));
+        EntityRendererRegistry.INSTANCE.register(BayouBluesEntities.BAYOU_BOAT, BoatEntityRenderer::new);
         SpriteIdentifierRegistry.INSTANCE.addIdentifier(new SpriteIdentifier(TexturedRenderLayers.SIGNS_ATLAS_TEXTURE, BayouBluesBlocks.CYPRESS_SIGNS.getFirst().getTexture()));
     }
 

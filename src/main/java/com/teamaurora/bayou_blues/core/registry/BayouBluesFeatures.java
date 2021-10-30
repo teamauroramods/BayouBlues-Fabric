@@ -56,6 +56,7 @@ public class BayouBluesFeatures {
     public static final class BlockStates {
         public static final BlockState CYPRESS_LOG = BayouBluesBlocks.CYPRESS_LOG.getDefaultState();
         public static final BlockState CYPRESS_LEAVES = BayouBluesBlocks.CYPRESS_LEAVES.getDefaultState();
+        public static final BlockState CYPRESS_SAPLING = BayouBluesBlocks.CYPRESS_SAPLING.getDefaultState();
         public static final BlockState HANGING_CYPRESS_LEAVES = BayouBluesBlocks.HANGING_CYPRESS_LEAVES.getDefaultState();
 
         public static final BlockState ALGAE = BayouBluesBlocks.ALGAE.getDefaultState();
@@ -81,6 +82,7 @@ public class BayouBluesFeatures {
     public static final class Configs {
         public static final TreeFeatureConfig CYPRESS_TREE_CONFIG_GROWN = (new TreeFeatureConfig.Builder(
                 new SimpleBlockStateProvider(BlockStates.CYPRESS_LOG),
+                new StraightTrunkPlacer(0, 0, 0),
                 new SimpleBlockStateProvider(BlockStates.CYPRESS_LEAVES),
                 new BlobFoliagePlacer(UniformIntDistribution.of(0), UniformIntDistribution.of(0), 0),
                 new StraightTrunkPlacer(0, 0, 0),
@@ -89,6 +91,7 @@ public class BayouBluesFeatures {
 
         public static final TreeFeatureConfig CYPRESS_TREE_CONFIG = (new TreeFeatureConfig.Builder(
                 new SimpleBlockStateProvider(BlockStates.CYPRESS_LOG),
+                new StraightTrunkPlacer(0, 0, 0),
                 new SimpleBlockStateProvider(BlockStates.CYPRESS_LEAVES),
                 new BlobFoliagePlacer(UniformIntDistribution.of(0), UniformIntDistribution.of(0), 0),
                 new StraightTrunkPlacer(0, 0, 0),
@@ -97,6 +100,7 @@ public class BayouBluesFeatures {
 
         public static final TreeFeatureConfig CYPRESS_KNEE_TREE_CONFIG = (new TreeFeatureConfig.Builder(
                 new SimpleBlockStateProvider(BlockStates.CYPRESS_LOG),
+                new StraightTrunkPlacer(0, 0, 0),
                 new SimpleBlockStateProvider(BlockStates.CYPRESS_LEAVES),
                 new BlobFoliagePlacer(UniformIntDistribution.of(0), UniformIntDistribution.of(0), 0),
                 new StraightTrunkPlacer(0, 0, 0),
@@ -105,6 +109,7 @@ public class BayouBluesFeatures {
 
         public static final TreeFeatureConfig WATER_CYPRESS_TREE_CONFIG = (new TreeFeatureConfig.Builder(
                 new SimpleBlockStateProvider(BlockStates.CYPRESS_LOG),
+                new StraightTrunkPlacer(0, 0, 0),
                 new SimpleBlockStateProvider(BlockStates.CYPRESS_LEAVES),
                 new BlobFoliagePlacer(UniformIntDistribution.of(0), UniformIntDistribution.of(0), 0),
                 new StraightTrunkPlacer(0, 0, 0),
@@ -113,6 +118,7 @@ public class BayouBluesFeatures {
 
         public static final TreeFeatureConfig WATER_CYPRESS_KNEE_TREE_CONFIG = (new TreeFeatureConfig.Builder(
                 new SimpleBlockStateProvider(BlockStates.CYPRESS_LOG),
+                new StraightTrunkPlacer(0, 0, 0),
                 new SimpleBlockStateProvider(BlockStates.CYPRESS_LEAVES),
                 new BlobFoliagePlacer(UniformIntDistribution.of(0), UniformIntDistribution.of(0), 0),
                 new StraightTrunkPlacer(0, 0, 0),
@@ -121,9 +127,11 @@ public class BayouBluesFeatures {
 
         public static final TreeFeatureConfig CYPRESS_BUSH_CONFIG = (new TreeFeatureConfig.Builder(
                 new SimpleBlockStateProvider(BlockStates.CYPRESS_LOG),
+                new StraightTrunkPlacer(1, 0, 0),
                 new SimpleBlockStateProvider(BlockStates.CYPRESS_LEAVES),
-                new BushFoliagePlacer(UniformIntDistribution.of(2),UniformIntDistribution.of(1), 2),
-                new StraightTrunkPlacer(1, 0, 0), new TwoLayersFeatureSize(0, 0, 0)
+                new SimpleBlockStateProvider(BlockStates.CYPRESS_SAPLING),
+                new BushFoliagePlacer(ConstantIntProvider.create(2),ConstantIntProvider.create(1), 2),
+                new TwoLayersFeatureSize(0, 0, 0)
         )).heightmap(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES).build();
 
         public static final SingleStateFeatureConfig ALGAE_PATCH_CONFIG = new SingleStateFeatureConfig(BlockStates.ALGAE);

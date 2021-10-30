@@ -6,6 +6,8 @@ import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.SingleStateFeatureConfig;
+import net.minecraft.world.gen.feature.util.FeatureContext;
+
 import java.util.Random;
 
 public class LargePatchFeature extends Feature<SingleStateFeatureConfig> {
@@ -14,7 +16,12 @@ public class LargePatchFeature extends Feature<SingleStateFeatureConfig> {
     }
 
     @Override
-    public boolean generate(StructureWorldAccess reader, ChunkGenerator generator, Random rand, BlockPos pos, SingleStateFeatureConfig config) {
+    public boolean generate(FeatureContext<SingleStateFeatureConfig> context) {
+        var pos = context.getOrigin();
+        var config = context.getConfig();
+        var rand = context.getRandom();
+        var reader = context.getWorld();
+
         int i = 0;
         for (BlockPos newPos : BlockPos.iterate(pos.add(-6, -6, -6), pos.add(6, 6, 6))) {
             if (config.state.getBlock().canPlaceAt(config.state, reader, newPos)) {

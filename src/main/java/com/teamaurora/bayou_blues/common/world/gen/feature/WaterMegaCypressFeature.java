@@ -17,6 +17,7 @@ import net.minecraft.world.*;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
+import net.minecraft.world.gen.feature.util.FeatureContext;
 
 import java.util.*;
 
@@ -26,7 +27,12 @@ public class WaterMegaCypressFeature extends Feature<TreeFeatureConfig> {
     }
 
     @Override
-    public boolean generate(StructureWorldAccess worldIn, ChunkGenerator generator, Random rand, BlockPos posIn, TreeFeatureConfig config) {
+    public boolean generate(FeatureContext<TreeFeatureConfig> context) {
+        var rand = context.getRandom();
+        var posIn = context.getOrigin();
+        var worldIn = context.getWorld();
+        var config = context.getConfig();
+
         int height = rand.nextInt(7) + 18;
         boolean bald = rand.nextInt(15) == 0;
         if (posIn.getY() <= 0 || posIn.getY() + height > worldIn.getHeight() - 1) {
@@ -150,7 +156,7 @@ public class WaterMegaCypressFeature extends Feature<TreeFeatureConfig> {
         if (!config.decorators.isEmpty()) {
             logsPos.sort(Comparator.comparingInt(Vec3i::getY));
             leavesClean.sort(Comparator.comparingInt(Vec3i::getY));
-            config.decorators.forEach((decorator) -> decorator.generate(worldIn, rand, logsPos, leavesClean, decSet, mutableBoundingBox));
+            config.decorators.forEach((decorator) -> decorator.generate(worldIn, ...));
         }
 
         return true;

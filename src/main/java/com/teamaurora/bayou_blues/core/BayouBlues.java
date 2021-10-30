@@ -1,5 +1,6 @@
 package com.teamaurora.bayou_blues.core;
 
+import co.eltrut.differentiate.core.registrator.Registrator;
 import com.teamaurora.bayou_blues.common.world.biome.BayouBluesBiomeFeatures;
 import com.teamaurora.bayou_blues.core.other.BayouBluesCompat;
 import com.teamaurora.bayou_blues.core.other.BayouBluesEvents;
@@ -17,6 +18,7 @@ public class BayouBlues implements ModInitializer {
 
     public static final String MODID = "bayou_blues";
     public static final String MOD_NAME = "BayouBlues";
+    public static final Registrator REGISTRATOR = new Registrator(MODID);
 
     @Override
     public void onInitialize() {

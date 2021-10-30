@@ -12,6 +12,8 @@ import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
+import net.minecraft.world.gen.feature.util.FeatureContext;
+
 import java.util.*;
 
 public class CypressFeature extends Feature<TreeFeatureConfig> {
@@ -20,7 +22,12 @@ public class CypressFeature extends Feature<TreeFeatureConfig> {
     }
 
     @Override
-    public boolean generate(StructureWorldAccess worldIn, ChunkGenerator generator, Random rand, BlockPos position, TreeFeatureConfig config) {
+    public boolean generate(FeatureContext<TreeFeatureConfig> context) {
+        var rand = context.getRandom();
+        var position = context.getOrigin();
+        var worldIn = context.getWorld();
+        var config = context.getConfig();
+
         int height = rand.nextInt(5) + 9;
         boolean bald = rand.nextInt(15) == 0;
         if (position.getY() <= 0 || position.getY() + height > worldIn.getHeight() - 1) {

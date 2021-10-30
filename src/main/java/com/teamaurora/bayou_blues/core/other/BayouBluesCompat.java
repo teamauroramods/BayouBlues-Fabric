@@ -15,6 +15,7 @@ public class BayouBluesCompat {
         registerCompostables();
         registerFlammables();
     }
+
     public static void registerCompostables() {
         registerCompostableItem(0.3F, BayouBluesBlocks.CYPRESS_LEAVES);
         registerCompostableItem(0.3F, BayouBluesBlocks.CYPRESS_SAPLING);

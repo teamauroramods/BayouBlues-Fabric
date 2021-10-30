@@ -3,14 +3,17 @@ package com.teamaurora.bayou_blues.common.world.gen.treedecorator;
 import com.mojang.serialization.Codec;
 import com.teamaurora.bayou_blues.core.registry.BayouBluesBlocks;
 import com.teamaurora.bayou_blues.core.registry.BayouBluesFeatures;
+import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockBox;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.StructureWorldAccess;
+import net.minecraft.world.TestableWorld;
 import net.minecraft.world.gen.treedecorator.TreeDecorator;
 import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
+import java.util.function.BiConsumer;
 
 public class HangingCypressLeavesTreeDecorator extends TreeDecorator {
     public static final Codec<HangingCypressLeavesTreeDecorator> CODEC;
@@ -19,6 +22,17 @@ public class HangingCypressLeavesTreeDecorator extends TreeDecorator {
     @Override
     protected TreeDecoratorType<?> getType() {
         return BayouBluesFeatures.HANGING_CYPRESS_LEAVES;
+    }
+
+    @Override
+    public void generate(TestableWorld world, BiConsumer<BlockPos, BlockState> replacer, Random random, List<BlockPos> logPositions, List<BlockPos> leavesPositions) {
+        for (BlockPos pos : leavesPositions) {
+            if (world.getBlockState(pos.down()).isAir()) {
+                if (random.nextInt(3) == 0) {
+                    world.setBlockState(pos.down(), BayouBluesBlocks.HANGING_CYPRESS_LEAVES.getDefaultState(), 3);
+                }
+            }
+        }
     }
 
     static {

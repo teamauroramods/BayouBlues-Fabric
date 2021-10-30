@@ -6,16 +6,19 @@ import com.teamaurora.bayou_blues.common.block.BeardMossBlockBlock;
 import com.teamaurora.bayou_blues.common.util.TreeUtil;
 import com.teamaurora.bayou_blues.core.registry.BayouBluesBlocks;
 import com.teamaurora.bayou_blues.core.registry.BayouBluesFeatures;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.util.math.BlockBox;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.StructureWorldAccess;
+import net.minecraft.world.TestableWorld;
 import net.minecraft.world.gen.treedecorator.TreeDecorator;
 import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
 
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
+import java.util.function.BiConsumer;
 
 public class BeardMossTreeDecorator extends TreeDecorator {
     public static final Codec<BeardMossTreeDecorator> CODEC;
@@ -31,11 +34,11 @@ public class BeardMossTreeDecorator extends TreeDecorator {
     }
 
     @Override
-    public void generate(StructureWorldAccess world, Random rand, List<BlockPos> logs, List<BlockPos> leaves, Set<BlockPos> updatedBlocks, BlockBox bounds) {
-        for (BlockPos pos : logs) {
+    public void generate(TestableWorld world, BiConsumer<BlockPos, BlockState> replacer, Random random, List<BlockPos> logPositions, List<BlockPos> leavesPositions) {
+        for (BlockPos pos : logPositions) {
             if (TreeUtil.isAirOrLeaves(world, pos.down())) {
                 boolean flag = true;
-                int rand1 = rand.nextInt(3) + 1;
+                int rand1 = random.nextInt(3) + 1;
                 for (int i = 0; i < rand1; i++) {
                     if (!TreeUtil.isAirOrLeaves(world, pos.down(i + 1))) {
                         flag = false;
@@ -47,7 +50,7 @@ public class BeardMossTreeDecorator extends TreeDecorator {
                     for (int i = 0; i < rand1; i++) {
                         world.setBlockState(pos.down(i + 1), BayouBluesBlocks.BEARD_MOSS_BLOCK.getDefaultState().with(BeardMossBlockBlock.PERSISTENT, false), 3);
                     }
-                    int rand2 = rand.nextInt(6) + 1;
+                    int rand2 = random.nextInt(6) + 1;
                     for (int i = 0; i < rand2; i++) {
                         if (!world.isAir(pos.down(rand1 + i + 1))) {
                             if (i > 0) {
@@ -64,11 +67,11 @@ public class BeardMossTreeDecorator extends TreeDecorator {
                 }
             }
         }
-        for (BlockPos pos : leaves) {
-            if (rand.nextInt(6) == 0) {
+        for (BlockPos pos : leavesPositions) {
+            if (random.nextInt(6) == 0) {
                 if (TreeUtil.isAirOrLeaves(world, pos.down())) {
                     boolean flag = true;
-                    int rand1 = rand.nextInt(2) + 1;
+                    int rand1 = random.nextInt(2) + 1;
                     for (int i = 0; i < rand1; i++) {
                         if (!TreeUtil.isAirOrLeaves(world, pos.down())) {
                             flag = false;
@@ -80,7 +83,7 @@ public class BeardMossTreeDecorator extends TreeDecorator {
                         for (int i = 0; i < rand1; i++) {
                             world.setBlockState(pos.down(i + 1), BayouBluesBlocks.BEARD_MOSS_BLOCK.getDefaultState().with(BeardMossBlockBlock.PERSISTENT, false), 3);
                         }
-                        int rand2 = rand.nextInt(4) + 1;
+                        int rand2 = random.nextInt(4) + 1;
                         for (int i = 0; i < rand2; i++) {
                             if (!world.isAir(pos.down(rand1 + i + 1))) {
                                 if (i > 0) {
@@ -98,5 +101,10 @@ public class BeardMossTreeDecorator extends TreeDecorator {
                 }
             }
         }
+    }
+
+    @Override
+    public void generate(StructureWorldAccess world, Random random, List<BlockPos> logPositions, List<BlockPos> leavesPositions, Set<BlockPos> updatedBlocks, BlockBox bounds) {
+
     }
 }
