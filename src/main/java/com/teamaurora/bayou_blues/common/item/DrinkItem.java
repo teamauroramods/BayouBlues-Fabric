@@ -30,10 +30,10 @@ public class DrinkItem extends Item {
         if (stack.isEmpty()) {
             return new ItemStack(Items.GLASS_BOTTLE);
         } else {
-            if (livingEntity instanceof PlayerEntity && !((PlayerEntity)livingEntity).abilities.creativeMode) {
+            if (livingEntity instanceof PlayerEntity && !((PlayerEntity)livingEntity).getAbilities().creativeMode) {
                 ItemStack itemstack = new ItemStack(Items.GLASS_BOTTLE);
                 PlayerEntity playerentity = (PlayerEntity)livingEntity;
-                if (!playerentity.inventory.insertStack(itemstack)) {
+                if (!playerentity.getInventory().insertStack(itemstack)) {
                     playerentity.dropItem(itemstack, false);
                 }
             }

@@ -17,11 +17,13 @@ import net.minecraft.util.registry.Registry;
 import java.util.function.Supplier;
 
 public class BayouBluesItems {
+    private static final ItemHelper HELPER = BayouBlues.REGISTRATOR.getHelper(Registry.ITEM);
+
     public static final Item CYPRESS_BOAT = registerBoatItem("cypress", ()-> BayouBluesEntities.BAYOU_BOAT);
 
-    public static final Item GOOSEBERRIES = createItem("gooseberries", new Item(new Item.Settings().food(Foods.GOOSEBERRIES).group(ItemGroup.FOOD)));
-    public static final Item GOOSEBERRY_JUICE = createItem("gooseberry_juice", new DrinkItem(new Item.Settings().food(Foods.GOOSEBERRY_JUICE).maxCount(16).group(ItemGroup.FOOD)));
-    public static final Item GOOSEBERRY_PIE = createItem("gooseberry_pie", new Item(new Item.Settings().food(Foods.GOOSEBERRY_PIE).group(ItemGroup.FOOD)));
+    public static final Item GOOSEBERRIES = HELPER.createItem("gooseberries", new Item(new Item.Settings().food(Foods.GOOSEBERRIES).group(ItemGroup.FOOD)));
+    public static final Item GOOSEBERRY_JUICE = HELPER.createItem("gooseberry_juice", new DrinkItem(new Item.Settings().food(Foods.GOOSEBERRY_JUICE).maxCount(16).group(ItemGroup.FOOD)));
+    public static final Item GOOSEBERRY_PIE = HELPER.createItem("gooseberry_pie", new Item(new Item.Settings().food(Foods.GOOSEBERRY_PIE).group(ItemGroup.FOOD)));
 
     public static final Item HONEY_GLAZED_GOOSEBERRIES = HELPER.createItem("honey_glazed_gooseberries", new Item(new Item.Settings().food(Foods.HONEY_GLAZED_GOOSEBERRIES).group(ItemGroup.FOOD)));
     public static final Item GOOSEBERRY_JAM = HELPER.createItem("gooseberry_jam", new JamItem(new Item.Settings().recipeRemainder(Items.GLASS_BOTTLE).food(Foods.GOOSEBERRY_JAM).maxCount(16).group(ItemGroup.FOOD)));

@@ -16,7 +16,7 @@ public final class TreeUtil {
 
     public static void placeLeafAt(ModifiableTestableWorld world, BlockPos pos, Random rand, TreeFeatureConfig config) {
         if (isAirOrLeaves(world, pos)) {
-            setForcedState(world, pos, config.leavesProvider.getBlockState(rand, pos).with(LeavesBlock.DISTANCE, 1));
+            setForcedState(world, pos, config.dirtProvider.getBlockState(rand, pos).with(LeavesBlock.DISTANCE, 1));
         }
     }
 

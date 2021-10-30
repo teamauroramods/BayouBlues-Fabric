@@ -7,10 +7,11 @@ import com.teamaurora.bayou_blues.common.world.gen.treedecorator.*;
 import com.teamaurora.bayou_blues.core.BayouBlues;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.util.math.intprovider.ConstantIntProvider;
+import net.minecraft.util.math.intprovider.IntProvider;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.Heightmap;
-import net.minecraft.world.gen.UniformIntDistribution;
 import net.minecraft.world.gen.decorator.ChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.CountExtraDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
@@ -84,8 +85,8 @@ public class BayouBluesFeatures {
                 new SimpleBlockStateProvider(BlockStates.CYPRESS_LOG),
                 new StraightTrunkPlacer(0, 0, 0),
                 new SimpleBlockStateProvider(BlockStates.CYPRESS_LEAVES),
-                new BlobFoliagePlacer(UniformIntDistribution.of(0), UniformIntDistribution.of(0), 0),
-                new StraightTrunkPlacer(0, 0, 0),
+                new SimpleBlockStateProvider(BlockStates.CYPRESS_SAPLING),
+                new BlobFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0), 0),
                 new TwoLayersFeatureSize(0, 0, 0)
         )).ignoreVines().decorators(ImmutableList.of(HangingCypressLeavesTreeDecorator.DECORATOR, CypressBranchTreeDecorator.DECORATOR)).build();
 
@@ -93,8 +94,8 @@ public class BayouBluesFeatures {
                 new SimpleBlockStateProvider(BlockStates.CYPRESS_LOG),
                 new StraightTrunkPlacer(0, 0, 0),
                 new SimpleBlockStateProvider(BlockStates.CYPRESS_LEAVES),
-                new BlobFoliagePlacer(UniformIntDistribution.of(0), UniformIntDistribution.of(0), 0),
-                new StraightTrunkPlacer(0, 0, 0),
+                new SimpleBlockStateProvider(BlockStates.CYPRESS_SAPLING),
+                new BlobFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0), 0),
                 new TwoLayersFeatureSize(0, 0, 0)
         )).ignoreVines().decorators(ImmutableList.of(HangingCypressLeavesTreeDecorator.DECORATOR, SparseCypressKneesTreeDecorator.DECORATOR, CypressBranchTreeDecorator.DECORATOR, SparseLeaveVineTreeDecorator.DECORATOR, BeardMossTreeDecorator.DECORATOR)).build();
 
@@ -102,8 +103,8 @@ public class BayouBluesFeatures {
                 new SimpleBlockStateProvider(BlockStates.CYPRESS_LOG),
                 new StraightTrunkPlacer(0, 0, 0),
                 new SimpleBlockStateProvider(BlockStates.CYPRESS_LEAVES),
-                new BlobFoliagePlacer(UniformIntDistribution.of(0), UniformIntDistribution.of(0), 0),
-                new StraightTrunkPlacer(0, 0, 0),
+                new SimpleBlockStateProvider(BlockStates.CYPRESS_SAPLING),
+                new BlobFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0), 0),
                 new TwoLayersFeatureSize(0, 0, 0)
         )).ignoreVines().decorators(ImmutableList.of(HangingCypressLeavesTreeDecorator.DECORATOR, CypressKneesTreeDecorator.DECORATOR, CypressBranchTreeDecorator.DECORATOR, SparseLeaveVineTreeDecorator.DECORATOR, BeardMossTreeDecorator.DECORATOR)).build();
 
@@ -111,8 +112,8 @@ public class BayouBluesFeatures {
                 new SimpleBlockStateProvider(BlockStates.CYPRESS_LOG),
                 new StraightTrunkPlacer(0, 0, 0),
                 new SimpleBlockStateProvider(BlockStates.CYPRESS_LEAVES),
-                new BlobFoliagePlacer(UniformIntDistribution.of(0), UniformIntDistribution.of(0), 0),
-                new StraightTrunkPlacer(0, 0, 0),
+                new SimpleBlockStateProvider(BlockStates.CYPRESS_SAPLING),
+                new BlobFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0), 0),
                 new TwoLayersFeatureSize(0, 0, 0)
         )).ignoreVines().maxWaterDepth(3).decorators(ImmutableList.of(HangingCypressLeavesTreeDecorator.DECORATOR, SparseCypressKneesTreeDecorator.DECORATOR, CypressBranchTreeDecorator.DECORATOR, SparseLeaveVineTreeDecorator.DECORATOR, BeardMossTreeDecorator.DECORATOR)).build();
 
@@ -120,8 +121,8 @@ public class BayouBluesFeatures {
                 new SimpleBlockStateProvider(BlockStates.CYPRESS_LOG),
                 new StraightTrunkPlacer(0, 0, 0),
                 new SimpleBlockStateProvider(BlockStates.CYPRESS_LEAVES),
-                new BlobFoliagePlacer(UniformIntDistribution.of(0), UniformIntDistribution.of(0), 0),
-                new StraightTrunkPlacer(0, 0, 0),
+                new SimpleBlockStateProvider(BlockStates.CYPRESS_SAPLING),
+                new BlobFoliagePlacer(ConstantIntProvider.create(0), ConstantIntProvider.create(0), 0),
                 new TwoLayersFeatureSize(0, 0, 0)
         )).ignoreVines().maxWaterDepth(3).decorators(ImmutableList.of(HangingCypressLeavesTreeDecorator.DECORATOR, CypressBranchTreeDecorator.DECORATOR, SparseLeaveVineTreeDecorator.DECORATOR, CypressKneesTreeDecorator.DECORATOR, BeardMossTreeDecorator.DECORATOR)).build();
 

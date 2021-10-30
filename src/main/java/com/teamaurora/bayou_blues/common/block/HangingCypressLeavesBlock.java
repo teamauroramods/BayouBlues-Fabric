@@ -45,9 +45,9 @@ public class HangingCypressLeavesBlock extends Block {
     public BlockState getPlacementState(ItemPlacementContext context) {
         World world = context.getWorld();
         BlockPos pos = context.getBlockPos();
-        Block block = world.getBlockState(pos.up()).getBlock();
+        BlockState state = world.getBlockState(pos.up()).getBlock().getDefaultState();
 
-        if (block.isIn(BlockTags.LOGS) || block.isIn(BlockTags.LEAVES)) {
+        if (state.isIn(BlockTags.LOGS) || state.isIn(BlockTags.LEAVES)) {
             return this.getDefaultState();
         } else {
             return null;

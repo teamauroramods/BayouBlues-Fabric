@@ -58,23 +58,23 @@ public class BayouBluesBlocks {
     public static final Block CYPRESS_BRANCH = HELPER.createSimpleBlock("cypress_branch", new CypressBranchBlock(FabricBlockSettings.of(Material.PLANT).ticksRandomly().noCollision().sounds(BlockSoundGroup.BAMBOO_SAPLING).breakByTool(FabricToolTags.SHEARS).breakByTool(FabricToolTags.HOES)), ItemGroup.DECORATIONS);
 
     // lilies
-    public static final Block BLUE_LILY = createBlockNoItem("blue_lily", new LilyFlowerBlock(BayouBluesItems.BLUE_LILY, FabricBlockSettings.copy(Blocks.LILY_PAD)));
-    public static final Block LIGHT_GRAY_LILY = createBlockNoItem("light_gray_lily", new LilyFlowerBlock(BayouBluesItems.LIGHT_GRAY_LILY, FabricBlockSettings.copy(Blocks.LILY_PAD)));
-    public static final Block CYAN_LILY = createBlockNoItem("cyan_lily", new LilyFlowerBlock(BayouBluesItems.CYAN_LILY, FabricBlockSettings.copy(Blocks.LILY_PAD)));
-    public static final Block LIGHT_BLUE_LILY = createBlockNoItem("light_blue_lily", new LilyFlowerBlock(BayouBluesItems.LIGHT_BLUE_LILY, FabricBlockSettings.copy(Blocks.LILY_PAD)));
-    public static final Block MAGENTA_LILY = createBlockNoItem("magenta_lily", new LilyFlowerBlock(BayouBluesItems.MAGENTA_LILY, FabricBlockSettings.copy(Blocks.LILY_PAD)));
-    public static final Block PINK_LILY = createBlockNoItem("pink_lily", new LilyFlowerBlock(BayouBluesItems.PINK_LILY, FabricBlockSettings.copy(Blocks.LILY_PAD)));
-    public static final Block PURPLE_LILY = createBlockNoItem("purple_lily", new LilyFlowerBlock(BayouBluesItems.PURPLE_LILY, FabricBlockSettings.copy(Blocks.LILY_PAD)));
-    public static final Block WHITE_LILY = createBlockNoItem("white_lily", new LilyFlowerBlock(BayouBluesItems.WHITE_LILY, FabricBlockSettings.copy(Blocks.LILY_PAD)));
+    public static final Block BLUE_LILY = HELPER.createBlockExcludingItem("blue_lily", new LilyFlowerBlock(BayouBluesItems.BLUE_LILY, FabricBlockSettings.copy(Blocks.LILY_PAD)));
+    public static final Block LIGHT_GRAY_LILY = HELPER.createBlockExcludingItem("light_gray_lily", new LilyFlowerBlock(BayouBluesItems.LIGHT_GRAY_LILY, FabricBlockSettings.copy(Blocks.LILY_PAD)));
+    public static final Block CYAN_LILY = HELPER.createBlockExcludingItem("cyan_lily", new LilyFlowerBlock(BayouBluesItems.CYAN_LILY, FabricBlockSettings.copy(Blocks.LILY_PAD)));
+    public static final Block LIGHT_BLUE_LILY = HELPER.createBlockExcludingItem("light_blue_lily", new LilyFlowerBlock(BayouBluesItems.LIGHT_BLUE_LILY, FabricBlockSettings.copy(Blocks.LILY_PAD)));
+    public static final Block MAGENTA_LILY = HELPER.createBlockExcludingItem("magenta_lily", new LilyFlowerBlock(BayouBluesItems.MAGENTA_LILY, FabricBlockSettings.copy(Blocks.LILY_PAD)));
+    public static final Block PINK_LILY = HELPER.createBlockExcludingItem("pink_lily", new LilyFlowerBlock(BayouBluesItems.PINK_LILY, FabricBlockSettings.copy(Blocks.LILY_PAD)));
+    public static final Block PURPLE_LILY = HELPER.createBlockExcludingItem("purple_lily", new LilyFlowerBlock(BayouBluesItems.PURPLE_LILY, FabricBlockSettings.copy(Blocks.LILY_PAD)));
+    public static final Block WHITE_LILY = HELPER.createBlockExcludingItem("white_lily", new LilyFlowerBlock(BayouBluesItems.WHITE_LILY, FabricBlockSettings.copy(Blocks.LILY_PAD)));
 
-    public static final Block POTTED_BLUE_LILY = createBlockNoItem("potted_blue_lily", new FlowerPotBlock(BLUE_LILY, FabricBlockSettings.copy(Blocks.POTTED_ALLIUM)));
-    public static final Block POTTED_LIGHT_GRAY_LILY = createBlockNoItem("potted_light_gray_lily", new FlowerPotBlock(LIGHT_GRAY_LILY, FabricBlockSettings.copy(Blocks.POTTED_ALLIUM)));
-    public static final Block POTTED_CYAN_LILY = createBlockNoItem("potted_cyan_lily", new FlowerPotBlock(CYAN_LILY, FabricBlockSettings.copy(Blocks.POTTED_ALLIUM)));
-    public static final Block POTTED_LIGHT_BLUE_LILY = createBlockNoItem("potted_light_blue_lily", new FlowerPotBlock(LIGHT_BLUE_LILY, FabricBlockSettings.copy(Blocks.POTTED_ALLIUM)));
-    public static final Block POTTED_MAGENTA_LILY = createBlockNoItem("potted_magenta_lily", new FlowerPotBlock(MAGENTA_LILY, FabricBlockSettings.copy(Blocks.POTTED_ALLIUM)));
-    public static final Block POTTED_PINK_LILY = createBlockNoItem("potted_pink_lily", new FlowerPotBlock(PINK_LILY, FabricBlockSettings.copy(Blocks.POTTED_ALLIUM)));
-    public static final Block POTTED_PURPLE_LILY = createBlockNoItem("potted_purple_lily", new FlowerPotBlock(PURPLE_LILY, FabricBlockSettings.copy(Blocks.POTTED_ALLIUM)));
-    public static final Block POTTED_WHITE_LILY = createBlockNoItem("potted_white_lily", new FlowerPotBlock(WHITE_LILY, FabricBlockSettings.copy(Blocks.POTTED_ALLIUM)));
+    public static final Block POTTED_BLUE_LILY = HELPER.createBlockExcludingItem("potted_blue_lily", new FlowerPotBlock(BLUE_LILY, FabricBlockSettings.copy(Blocks.POTTED_ALLIUM)));
+    public static final Block POTTED_LIGHT_GRAY_LILY = HELPER.createBlockExcludingItem("potted_light_gray_lily", new FlowerPotBlock(LIGHT_GRAY_LILY, FabricBlockSettings.copy(Blocks.POTTED_ALLIUM)));
+    public static final Block POTTED_CYAN_LILY = HELPER.createBlockExcludingItem("potted_cyan_lily", new FlowerPotBlock(CYAN_LILY, FabricBlockSettings.copy(Blocks.POTTED_ALLIUM)));
+    public static final Block POTTED_LIGHT_BLUE_LILY = HELPER.createBlockExcludingItem("potted_light_blue_lily", new FlowerPotBlock(LIGHT_BLUE_LILY, FabricBlockSettings.copy(Blocks.POTTED_ALLIUM)));
+    public static final Block POTTED_MAGENTA_LILY = HELPER.createBlockExcludingItem("potted_magenta_lily", new FlowerPotBlock(MAGENTA_LILY, FabricBlockSettings.copy(Blocks.POTTED_ALLIUM)));
+    public static final Block POTTED_PINK_LILY = HELPER.createBlockExcludingItem("potted_pink_lily", new FlowerPotBlock(PINK_LILY, FabricBlockSettings.copy(Blocks.POTTED_ALLIUM)));
+    public static final Block POTTED_PURPLE_LILY = HELPER.createBlockExcludingItem("potted_purple_lily", new FlowerPotBlock(PURPLE_LILY, FabricBlockSettings.copy(Blocks.POTTED_ALLIUM)));
+    public static final Block POTTED_WHITE_LILY = HELPER.createBlockExcludingItem("potted_white_lily", new FlowerPotBlock(WHITE_LILY, FabricBlockSettings.copy(Blocks.POTTED_ALLIUM)));
 
     // algae
     public static final Block ALGAE = HELPER.createBlockExcludingItem("algae",  new AlgaeBlock(FabricBlockSettings.of(Material.PLANT).breakInstantly().sounds(BlockSoundGroup.LILY_PAD).nonOpaque().noCollision()));
@@ -95,8 +95,8 @@ public class BayouBluesBlocks {
         SignBlock sign = signBlockPair.getFirst();
         WallSignBlock wallSign = signBlockPair.getSecond();
 
-        createBlockNoItem(name + "_sign", sign);
-        createBlockNoItem(name + "_wall_sign", wallSign);
+        HELPER.createBlockExcludingItem(name + "_sign", sign);
+        HELPER.createBlockExcludingItem(name + "_wall_sign", wallSign);
 
         BayouBluesItems.registerSignItem(name + "_sign", sign, wallSign, new Item.Settings().maxCount(16).group(ItemGroup.DECORATIONS));
 
