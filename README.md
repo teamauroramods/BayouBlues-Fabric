@@ -8,8 +8,8 @@
   </a>
 </p>
 <p align="center">
-  <a href="https://discord.gg/VzXSCFp"><img src="https://img.shields.io/discord/440256241932173323?label=&color=898324&labelColor=76B92C&logo=Discord&logoColor=4C3828&style=for-the-badge"></a>
-    <a href="https://twitter.com/teamauroramods"><img src="https://img.shields.io/twitter/follow/teamauroramods?label=&color=898324&labelColor=76B92C&logo=Twitter&logoColor=4C3828&style=for-the-badge"></a>
+  <a href="https://discord.gg/VzXSCFp"><img src="https://img.shields.io/discord/440256241932173323?label=&color=898324&labelColor=76B92C&logo=Discord&logoColor=898324&style=for-the-badge"></a>
+    <a href="https://twitter.com/teamauroramods"><img src="https://img.shields.io/twitter/follow/teamauroramods?label=&color=898324&labelColor=76B92C&logo=Twitter&logoColor=898324&style=for-the-badge"></a>
   <a href="https://www.curseforge.com/minecraft/mc-mods/enhanced-mushrooms-fabric"><img src="http://cf.way2muchnoise.eu/493949.svg?badge_style=for_the_badge"></a>
     <a href="https://github.com/teamauroramods/EnhancedMushrooms-Fabric/blob/1.17/LICENSE"><img src="https://img.shields.io/badge/License-All%20rights%20reserved-red.svg?style=for-the-badge&color=898324&labelColor=76B92C"></a>
     <a href="https://www.curseforge.com/minecraft/mc-mods/enhanced-mushrooms-fabric"><img src="http://cf.way2muchnoise.eu/versions/493949.svg?badge_style=for_the_badge"></a>
