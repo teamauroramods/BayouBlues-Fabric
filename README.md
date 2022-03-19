@@ -1,3 +1,4 @@
+# NOTE: This repo is DEPRECATED and will not be updated. For pull requests, issues, etc. please see https://github.com/teamauroramods/BayouBlues
 <p align="center"><img src="https://raw.githubusercontent.com/teamauroramods/BayouBlues-Forge/master/src/main/resources/logo.png" width=60%></p>
 <h3 align="center">Bayou Blues Fabric</h3>
 
